@@ -30,6 +30,7 @@ An multi-modal Chatbot for online shopping assistent.
 
    * Identify topic
    * Sentiment Score {Positive, Negative, Neutral}
+   * In `get_sentiment_score.py` and `get_topic.py`
 
    Training corpus can be found [here](https://amritasaha1812.github.io/MMD/download/)
 
