@@ -115,10 +115,10 @@
                     url: "/get",
                     data: {messageText: message},
                     success: function(response) {
-                        console.log(response)
+                        console.log(response);
+                        response = JSON.parse(response);
                         $('#messageText').val('');
-
-                        var answer = response
+                        var answer = response["answer"];
                         const chatPanel = document.getElementById("chatPanel");
                         $(".media-list").append('<li class="media"><div class="media-body"><div class="media"><div class="media-body">' + answer + '<hr/></div></div></div></li>');
 			$(".fixed-panel").stop().animate({ scrollTop: $(".fixed-panel")[0].scrollHeight}, 1000);

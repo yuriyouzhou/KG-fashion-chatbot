@@ -2,5 +2,5 @@
 # Usage: pip install -r requirements.txt
 
 Flask>=0.11
-chatterbot>=0.7.1
+chatterbot==0.7.4
 SQLAlchemy>=1.1.11
