@@ -2,11 +2,17 @@
 <html>
     <head lang="en">
         <meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+				<meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Chatbot</title>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+				<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/css/jasny-bootstrap.min.css">
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/js/jasny-bootstrap.min.js"></script>
+
+
         <style type="text/css">
          .fixed-panel {
                 min-height: 400px;
@@ -63,7 +69,7 @@
         </style>
     </head>
 <body>
-        <div class="container background-color: rgb(255,0,255);">
+        <div class="container background-color: rgb(255,0,255); ">
 		  
             <div class="row">
                 <h3 class="text-center"><small><strong>紫鵑</strong></small><font color="white"> 岂曰无衣？ </font><small><strong>与子</strong></small><font color="white"> 同袍..</font></h3>
@@ -85,11 +91,27 @@
                                 <div class="input-group">
                                     <input type="text" class="form-control" placeholder="Enter Message" name="messageText" id="messageText" autofocus/>
                                     <span class="input-group-btn">
+                                    </span>
+                                    <span class="input-group-btn">
                                         <button class="btn btn-info" type="button" id="chatbot-form-btn">SEND <span class="glyphicon glyphicon-hand-up"></span></button>
                                     </span>
                                 </div>
                             </form>
                         </div>
+
+<form method="post" id="chatbot-image-form" enctype="multipart/form-data">
+      <span class="input-group-btn">
+          <button class="btn btn-info" type="button" id="chatbot-image-btn">Upload <span class="glyphicon glyphicon-upload"></span></button>
+      </span>
+
+      <div class="fileinput fileinput-new" data-provides="fileinput">
+        <div>
+         <span class="btn btn-primary btn-file"><span class="fileinput-new"><span class="fa fa-camera"></span> Image 3</span>
+          <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
+          <input type="file" name="file" class="ephoto-upload" accept="image/jpeg"></span>
+          </div>
+        </div>
+</form>
                     </div>
                 </div>
 				
@@ -100,6 +122,35 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <script>
         $(function() {
+
+					$('.ephoto-upload').change(function(e){
+						console.log('here');
+					if($(this).val()!='') {   
+					var formData = new FormData();
+					formData.append('file', $(this)[0].files[0]);
+					$.ajax({
+					    url: '/path/to/upload',
+					    type: 'POST',
+					    data: formData,
+					    async: false,
+					    success: function (r) { 
+					    if(r.success) {
+					    //success work 
+					     }
+					    },
+					    error: function (r) {
+					    	console.log("error");
+					    },
+					    cache: false,
+					    contentType: false,
+					    processData: false
+					});
+
+					}
+
+					}); 
+
+
             $('#chatbot-form-btn').click(function(e) {
                 e.preventDefault();
                 $('#chatbot-form').submit();
@@ -121,7 +172,7 @@
                         var answer = response["answer"];
                         const chatPanel = document.getElementById("chatPanel");
                         $(".media-list").append('<li class="media"><div class="media-body"><div class="media"><div class="media-body">' + answer + '<hr/></div></div></div></li>');
-			$(".fixed-panel").stop().animate({ scrollTop: $(".fixed-panel")[0].scrollHeight}, 1000);
+												$(".fixed-panel").stop().animate({ scrollTop: $(".fixed-panel")[0].scrollHeight}, 1000);
 			
                     },
                     error: function(error) {
@@ -131,5 +182,6 @@
             });
         });
         </script>
+
     </body>
 </html>
