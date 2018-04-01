@@ -91,28 +91,31 @@
                                 <div class="input-group">
                                     <input type="text" class="form-control" placeholder="Enter Message" name="messageText" id="messageText" autofocus/>
                                     <span class="input-group-btn">
+                                        <button class="btn btn-info" type="button" id="chatbot-form-btn"><span class="glyphicon glyphicon-hand-up"> Send </span></button>
+                                        <span class="btn btn-primary btn-file"><span class="fileinput-new"><span class="fa fa-camera"></span> Upload </span>
+                                            <input type="file" name="file" class="ephoto-upload" accept="image/jpeg">
+                                        </span>
+
                                     </span>
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-info" type="button" id="chatbot-form-btn">SEND <span class="glyphicon glyphicon-hand-up"></span></button>
-                                    </span>
+
                                 </div>
                             </form>
                         </div>
 
-<form method="post" id="chatbot-image-form" enctype="multipart/form-data">
+<!-- <form method="post" id="chatbot-image-form" enctype="multipart/form-data">
       <span class="input-group-btn">
           <button class="btn btn-info" type="button" id="chatbot-image-btn">Upload <span class="glyphicon glyphicon-upload"></span></button>
       </span>
 
       <div class="fileinput fileinput-new" data-provides="fileinput">
         <div>
-         <span class="btn btn-primary btn-file"><span class="fileinput-new"><span class="fa fa-camera"></span> Image 3</span>
+         <span class="btn btn-primary btn-file"><span class="fileinput-new"><span class="fa fa-camera"></span> Upload </span>
           <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
           <input type="file" name="file" class="ephoto-upload" accept="image/jpeg"></span>
           </div>
         </div>
 </form>
-                    </div>
+          -->           </div>
                 </div>
 				
             </div>
@@ -125,6 +128,8 @@
 
 					$('.ephoto-upload').change(function(e){
 						console.log('here');
+                        $(".media-list").append('<li class="media"><div class="media-body"><div class="media"><div class="media-body">' + 'upload success' + '<hr/></div></div></div></li>');
+
 					if($(this).val()!='') {   
 					var formData = new FormData();
 					console.log($(this)[0].files[0]);

@@ -37,8 +37,8 @@ def get_bot_response():
 def upload():
     if request.method == 'POST':
         file = request.files['photo']
-        file_name = photos.save(file)
-        return file_name
+        # file_name = photos.save(file)
+        # return file_name
 
 
 if __name__ == "__main__":
