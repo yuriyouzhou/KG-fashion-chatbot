@@ -147,7 +147,7 @@
                         var answer = response["answer"];
                         const chatPanel = document.getElementById("chatPanel");
                         $(".media-list").append('<li class="media"><div class="media-body"><div class="media"><div class="media-body">' + answer + '<hr/></div></div></div></li>');
-                                                $(".fixed-panel").stop().animate({ scrollTop: $(".fixed-panel")[0].scrollHeight}, 1000);
+                        $(".fixed-panel").stop().animate({ scrollTop: $(".fixed-panel")[0].scrollHeight}, 1000);
 					    },
 					    error: function (r) {
 					    	console.log("error");
@@ -172,6 +172,8 @@
 
                 var message = $('#messageText').val();
                 $(".media-list").append('<li class="media"><div class="media-body"><div class="media"><div class="media-body"><p align="right">' + message + '</p><hr/></div></div></div></li>');
+                $(".fixed-panel").stop().animate({ scrollTop: $(".fixed-panel")[0].scrollHeight}, 1000);
+
                 $.ajax({
                     type: "get",
                     url: "/get",

@@ -2,8 +2,6 @@ from flask import Flask, render_template, request
 from flask_uploads import UploadSet, configure_uploads, IMAGES
 from chatterbot import ChatBot
 from chatterbot.trainers import ChatterBotCorpusTrainer
-from get_sentiment_score import get_sentiment_score
-from get_topic import get_topic
 import json
 import os
 
@@ -27,8 +25,8 @@ def get_bot_response():
     userText = request.args.get('messageText')
 
     answer = str(english_bot.get_response(userText))
-    score = get_sentiment_score(userText)
-    topic = get_topic(userText)
+    score = 0.0
+    topic = 'shopping'
 
     return json.dumps({'answer': answer, 'score':score, 'topic': topic})
 
