@@ -38,7 +38,8 @@ def upload():
     if request.method == 'POST':
         file = request.files['photo']
         # file_name = photos.save(file)
-        # return file_name
+        return json.dumps({'answer': "%s has received!"%file.name})
+
 
 
 if __name__ == "__main__":
