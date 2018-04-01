@@ -127,9 +127,10 @@
 						console.log('here');
 					if($(this).val()!='') {   
 					var formData = new FormData();
-					formData.append('file', $(this)[0].files[0]);
+					console.log($(this)[0].files[0]);
+					formData.append('photo', $(this)[0].files[0]);
 					$.ajax({
-					    url: '/path/to/upload',
+					    url: '/upload',
 					    type: 'POST',
 					    data: formData,
 					    async: false,
