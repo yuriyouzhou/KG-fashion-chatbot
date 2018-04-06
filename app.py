@@ -25,10 +25,26 @@ def get_bot_response():
     userText = request.args.get('messageText')
 
     answer = str(english_bot.get_response(userText))
-    score = 0.0
-    topic = 'shopping'
+    # score = 0.0
+    # topic = 'shopping'
 
-    return json.dumps({'answer': answer, 'score':score, 'topic': topic})
+    wordCount = len(answer.split(" "))
+
+    # return json.dumps({'answer': answer, 'score':score, 'topic': topic})
+    return json.dumps( {
+         "sentiment": {
+          "label": ["anticipation", "Joy"],
+          "anticipation": 0.941,
+          "joy": 0.73,
+          "trust": 0.59,
+          "fear": 0.01,
+          "surprise":0.042,
+          "sadness":0.05,
+          "disgust":0.03,
+          "anger": 0.01,
+         },
+         "wordCount": wordCount
+        })
 
 
 @app.route('/upload', methods=['GET', 'POST'])

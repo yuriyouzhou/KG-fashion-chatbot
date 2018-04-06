@@ -3,7 +3,7 @@
     <head lang="en">
         <meta charset="UTF-8">
 				<meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Chatbot</title>
+        <title>Sentiment Classification Demo</title>
 				<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
@@ -72,14 +72,14 @@
         <div class="container background-color: rgb(255,0,255); ">
 		  
             <div class="row">
-                <h3 class="text-center"><small><strong>紫鵑</strong></small><font color="white"> 岂曰无衣？ </font><small><strong>与子</strong></small><font color="white"> 同袍..</font></h3>
+                <h3 class="text-center"><small><strong>Sentiment Classification Playground</strong></small><font color="white"> Detect your emotions</font><small><strong></strong></small><font color="white"> </font></h3>
 
                 <div class="col-md-4 col-md-offset-4">
 				
                     <div id="chatPanel" class="panel panel-info">
                         <div class="panel-heading">
                            
-							<strong><span class="glyphicon glyphicon-globe"></span> 同我讲话吧。</strong>
+							<strong><span class="glyphicon glyphicon-globe"></span> Please talk to me and see what I can find</strong>
                         
 						</div>
                         <div class="panel-body fixed-panel">
@@ -142,9 +142,9 @@
 					    async: false,
 					    success: function (response) { 
                         console.log(response);
-                        response = JSON.parse(response);
-                        $('#messageText').val('');
-                        var answer = response["answer"];
+                        // response = JSON.parse(response);
+                        // $('#messageText').val('');
+                        var answer = response;
                         const chatPanel = document.getElementById("chatPanel");
                         $(".media-list").append('<li class="media"><div class="media-body"><div class="media"><div class="media-body">' + answer + '<hr/></div></div></div></li>');
                         $(".fixed-panel").stop().animate({ scrollTop: $(".fixed-panel")[0].scrollHeight}, 1000);
@@ -182,7 +182,7 @@
                         console.log(response);
                         response = JSON.parse(response);
                         $('#messageText').val('');
-                        var answer = response["answer"];
+                        var answer = JSON.stringify(response)
                         const chatPanel = document.getElementById("chatPanel");
                         $(".media-list").append('<li class="media"><div class="media-body"><div class="media"><div class="media-body">' + answer + '<hr/></div></div></div></li>');
 												$(".fixed-panel").stop().animate({ scrollTop: $(".fixed-panel")[0].scrollHeight}, 1000);
