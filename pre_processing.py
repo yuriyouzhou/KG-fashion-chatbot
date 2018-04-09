@@ -1,4 +1,9 @@
 # -*- coding: utf-8 -*-
+"""
+Created on Fri Mar 30 20:24:17 2018
+
+@author: Siru
+"""
 
 import os
 import zipfile
@@ -62,6 +67,20 @@ def extract_data(x):
             final.append(result)
     return final
 
+def sys_response(image,text):
+    result = ''
+    len_img = len(image)
+    len_text = len(text)
+    if len_image and len_text:
+        result = 'both'
+    elif len_image>0 and len_text ==0:
+        result = 'image'
+    elif len_image ==0 and len_text >0:
+        result = 'text'
+    else:
+        raise ValueError
+        print(image,text)
+    return result
 
 def main():
     with zipfile.ZipFile('dataset.zip','r') as f:
@@ -75,9 +94,13 @@ def main():
             counter += 1
     
     clean_data = []
+    i = 0
     for file in outfile:
+        i += 1 
         tmp = extract_data(file)
         clean_data.append(tmp)
+        if i > 1000:
+            break
     dataset = 'train'
     with open('processed_data_'+dataset+'.csv','w',newline='') as writer:
         results = csv.writer(writer)
@@ -86,7 +109,8 @@ def main():
                 label = i['user_label']
                 img = i['user_image']
                 text = i['user_text']
-                out = [label,img,text]
+                system_reply = sys_response(i['sys_image'],i['sys_text'])
+                out = [label,img,text,system_reply]
                 results.writerow(out)
 
 if __name__=='__main__':
