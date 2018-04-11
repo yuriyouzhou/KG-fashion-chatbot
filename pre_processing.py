@@ -10,9 +10,10 @@ import zipfile
 import json
 import re
 import csv
+import re
 
-# path = 'E:\\1_1social_media_computing\\cs4242-mini-project-master\\dataset-20180326T122551Z-001\\dataset'
-# os.chdir(path)
+path = 'E:\\1_1social_media_computing\\cs4242-mini-project-master\\dataset-20180326T122551Z-001\\dataset'
+os.chdir(path)
 
 def split_data(x,settype):
     if x.endswith('.json') and re.findall(settype,x):
@@ -67,21 +68,34 @@ def extract_data(x):
             final.append(result)
     return final
 
-def sys_response(image,text):
+def sys_response(x):
     result = ''
-    len_img = len(image)
+    try:
+        image = x['sys_image']
+    except KeyError:
+        image = [0]
+    try:
+        text = x['sys_text']
+    except KeyError:
+        text = []
     len_text = len(text)
-    if len_image and len_text:
+    if 1 in image and len_text>0:
         result = 'both'
-    elif len_image>0 and len_text ==0:
+    elif 1 in image and len_text ==0:
         result = 'image'
-    elif len_image ==0 and len_text >0:
+    elif 1 not in image and len_text >0:
         result = 'text'
     else:
-        raise ValueError
-        print(image,text)
+        result = 'nothing'
     return result
 
+def unicode_process(x):
+    if isinstance(x,str):
+        x = x.replace(u'\xa0', u'')
+        regex = re.compile('[^a-zA-Z]')
+        x = regex.sub(' ', x)
+    return x
+    
 def main():
     with zipfile.ZipFile('dataset.zip','r') as f:
         dataset = [split_data(x,'train') for x in f.namelist()]
@@ -96,22 +110,23 @@ def main():
     clean_data = []
     i = 0
     for file in outfile:
-        i += 1 
         tmp = extract_data(file)
         clean_data.append(tmp)
-        if i > 1000:
-            break
+        
     dataset = 'train'
     with open('processed_data_'+dataset+'.csv','w',newline='') as writer:
         results = csv.writer(writer)
         for j in clean_data:
             for i in j:
+                
                 label = i['user_label']
                 img = i['user_image']
                 text = i['user_text']
-                system_reply = sys_response(i['sys_image'],i['sys_text'])
+                system_reply = sys_response(i)
                 out = [label,img,text,system_reply]
+                out = [unicode_process(i) for i in out]
                 results.writerow(out)
 
 if __name__=='__main__':
+    main()
     main()
