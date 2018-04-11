@@ -5,6 +5,7 @@ from sklearn.model_selection import KFold
 from sklearn.svm import LinearSVC
 from sklearn.metrics import precision_score,recall_score
 import numpy as np
+from sklearn.externals import joblib
 
 path = 'E:\\1_1social_media_computing\\cs4242-mini-project-master'
 os.chdir(path)
@@ -17,18 +18,18 @@ def loading_process(x):
         x = x[:-1]
     return x
 
-def infer_intent(x):
+def intent_model_svm():
     label = []
-    image = []
+    #image = []
     text = []
     with open('processed_data_train.csv') as file:
-        lines = csv.DictReader(file)
+        lines = csv.reader(file)
         for line in lines:
-            label.append(line['type'])
+            if line[0] != '':
+                label.append(line[0])
             #image.append(line['image'])
-            text_tmp = loading_process(line['text'])
-            text.append(text_tmp)
-    text.append(loading_process(x))
+                text_tmp = loading_process(line[2])
+                text.append(text_tmp)
     x_feats = TfidfVectorizer(ngram_range=(1,2)).fit_transform(text)
     label = np.array(label)
     #performance evaluation
@@ -44,12 +45,10 @@ def infer_intent(x):
 
     # print('Average Precision is %f.' %(avg_p/10.0))
     # print('Average Recall is %f.' %(avg_r/10.0))
-    model = LinearSVC().fit(x_feats[0:-1],label)
-    output = model.predict(x_feats[-1])
-    return output
+    model = LinearSVC().fit(x_feats,label)
+    joblib.dump(model, 'intent_svm.pkl')
+    joblib.dump(x_feats,'tfidf_svm.pkl')
 
 
 if __name__=='__main__':
-    userText = 'Could you recommend some similar shoes to this one?'
-    intent = infer_intent(userText)
-    print('The intent is {}'.format(intent))
+    intent_model_svm()
