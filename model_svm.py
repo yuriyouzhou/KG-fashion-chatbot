@@ -1,3 +1,10 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Sat Mar 31 10:24:07 2018
+
+@author: Siru
+"""
+
 import os
 import csv
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -49,6 +56,37 @@ def intent_model_svm():
     joblib.dump(model, 'intent_svm.pkl')
     joblib.dump(x_feats,'tfidf_svm.pkl')
 
+def response_model_svm():
+    label = []
+    #image = []
+    text = []
+    with open('processed_data_train.csv') as file:
+        lines = csv.reader(file)
+        for line in lines:
+            if line[0] != '':
+                label.append(line[3])
+            #image.append(line['image'])
+                text_tmp = loading_process(line[2])
+                text.append(text_tmp)
+    x_feats = TfidfVectorizer(ngram_range=(1,2)).fit_transform(text)
+    label = np.array(label)
+    #performance evaluation
+    avg_p = 0
+    avg_r = 0
+    k_fold = KFold(n_splits=10,random_state=1)
+    for train_index,test_index in k_fold.split(x_feats):
+        model = LinearSVC().fit(x_feats[train_index],label[train_index])
+        predicts = model.predict(x_feats[test_index])
+        #print(classification_report(y[test],predicts))
+        avg_p	+= precision_score(label[test_index],predicts, average='macro')
+        avg_r	+= recall_score(label[test_index],predicts, average='macro')
 
+    print('Average Precision is %f.' %(avg_p/10.0))
+    print('Average Recall is %f.' %(avg_r/10.0))
+    model = LinearSVC().fit(x_feats,label)
+    joblib.dump(model, 'intent_svm.pkl')
+    joblib.dump(x_feats,'tfidf_svm.pkl')
+    
 if __name__=='__main__':
     intent_model_svm()
+    response_model_svm()
