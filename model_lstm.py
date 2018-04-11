@@ -13,7 +13,6 @@ from keras.layers import LSTM,Bidirectional
 from sklearn.preprocessing import LabelBinarizer
 from keras.preprocessing.text import Tokenizer
 
-
 def loading_process(x):
     x = x.strip()
     if x[0] == '‘':
@@ -22,16 +21,22 @@ def loading_process(x):
         x = x[:-1]
     return x
 
-def load_data():
+def load_data(label):
     label = []
     image = []
     text = []
     with open(data_dir) as file:
-        lines = csv.DictReader(file)
+        lines = csv.reader(file)
         for line in lines:
-            label.append(line['type'])
+            if label =='response':
+                label.append(line[3])
+            elif label == 'intnet':
+                label.append(line[0])
+            else:
+                raise ValueError
+                print('Label can only be response or intent')
             #image.append(line['image'])
-            text_tmp = loading_process(line['text'])
+            text_tmp = loading_process(line[2])
             text.append(text_tmp)
     label = np.array(label)
     text = np.array(text)
@@ -88,3 +93,4 @@ score, acc = model.evaluate(x_test, y_test,
                             batch_size=batch_size)
 print('Test score:', score)
 print('Test accuracy:', acc)
+model.save()
