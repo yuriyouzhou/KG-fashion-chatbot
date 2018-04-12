@@ -21,16 +21,16 @@ def loading_process(x):
         x = x[:-1]
     return x
 
-def load_data(label):
+def load_data(y):
     label = []
     image = []
     text = []
     with open(data_dir) as file:
         lines = csv.reader(file)
         for line in lines:
-            if label =='response':
+            if y =='response':
                 label.append(line[3])
-            elif label == 'intent':
+            elif y == 'intent':
                 label.append(line[0])
             else:
                 raise ValueError
@@ -62,7 +62,7 @@ maxlen = 80  # cut texts after this number of words (among top max_features most
 batch_size = 32
 
 print('Loading data...')
-x_train, y_train,x_test,y_test = load_data()
+x_train, y_train,x_test,y_test = load_data('response')
 print(len(x_train), 'train sequences')
 print(len(x_test), 'test sequences')
 
@@ -74,9 +74,10 @@ print('x_test shape:', x_test.shape)
 
 print('Build model...')
 model = Sequential()
-model.add(Embedding(max_features, 128))
+model.add(Embedding(max_features, 64))
 model.add(Bidirectional(LSTM(128, dropout=0.2, recurrent_dropout=0.2)))
-model.add(Dense(21, activation='sigmoid'))
+#configure to 21 for intent model
+model.add(Dense(3, activation='sigmoid'))
 
 
 # try using different optimizers and different optimizer configs
@@ -87,10 +88,11 @@ model.compile(loss='categorical_crossentropy',
 print('Train...')
 model.fit(x_train, y_train,
           batch_size=batch_size,
-          epochs=15,
+          epochs=1,
           validation_data=(x_test, y_test))
 score, acc = model.evaluate(x_test, y_test,
                             batch_size=batch_size)
 print('Test score:', score)
 print('Test accuracy:', acc)
-model.save()
+
+model.save('./response_lstm.pkl')
