@@ -30,7 +30,7 @@ def load_data(label):
         for line in lines:
             if label =='response':
                 label.append(line[3])
-            elif label == 'intnet':
+            elif label == 'intent':
                 label.append(line[0])
             else:
                 raise ValueError
