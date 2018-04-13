@@ -41,6 +41,12 @@ def load_data(y):
     label = np.array(label)
     text = np.array(text)
     text = np.vstack((label,text)).T
+    sample = text[text[:,0]=='repeat question']
+    text = text[text[:,0]!='repeat question']
+    sample
+    idx = np.random.randint(low = 1,high = sample.shape[0],size=80000)
+    sample = sample[idx]
+    text = np.vstack((sample,text))
     np.random.shuffle(text)
     x_train = text[0:round(0.85*len(label)),1]
     x_test = text[round(0.85*len(label)):,1]
@@ -62,7 +68,7 @@ maxlen = 80  # cut texts after this number of words (among top max_features most
 batch_size = 32
 
 print('Loading data...')
-x_train, y_train,x_test,y_test = load_data('response')
+x_train, y_train,x_test,y_test = load_data('intent')
 print(len(x_train), 'train sequences')
 print(len(x_test), 'test sequences')
 
@@ -77,7 +83,7 @@ model = Sequential()
 model.add(Embedding(max_features, 64))
 model.add(Bidirectional(LSTM(128, dropout=0.2, recurrent_dropout=0.2)))
 #configure to 21 for intent model
-model.add(Dense(3, activation='sigmoid'))
+model.add(Dense(21, activation='sigmoid'))
 
 
 # try using different optimizers and different optimizer configs
@@ -95,4 +101,4 @@ score, acc = model.evaluate(x_test, y_test,
 print('Test score:', score)
 print('Test accuracy:', acc)
 
-model.save('./response_lstm.pkl')
+model.save('./intent_lstm.pkl')
