@@ -11,6 +11,8 @@ import numpy as np
 from keras.models import load_model
 from keras.preprocessing.text import Tokenizer
 from keras.preprocessing.sequence import pad_sequences
+from sklearn.externals import joblib
+from sklearn.feature_extraction.text import TfidfVectorizer
 
 def lstm_response(input_text):
     labels = ['exit message','greeting','question','question ask attribute','question buy','question celebrity','question do not like earlier show result','question do not like n show result','question do not like show result','question filter results','question go with','question like earlier show result','question like n show result','question like show result','question show orientation','question show similar to','question sort results','question suited for','repeat question','switch synse','user info']
@@ -33,3 +35,21 @@ def lstm_intent(input_text):
     predict = model.predict(x_train)
     predict = labels[np.argmax(np.bincount(predict.argmax(axis=-1)))]
     return predict
+
+def svm_intent(input_text):
+    model = joblib.load('intent_svm.pkl')
+    tfidf = joblib.load('tfidf_svm.pkl')
+    x = input_text.strip().split(' ')
+    x = TfidfVectorizer(vocabulary=tfidf).fit_transform(x)
+    result = model.predict(x)
+    return result[0]
+
+def svm_response(input_text):
+    model = joblib.load('response_svm.pkl')
+    tfidf = joblib.load('tfidf_svm.pkl')
+    x = input_text.strip().split(' ')
+    x = TfidfVectorizer(vocabulary=tfidf).fit_transform(x)
+    result = model.predict(x)
+    return result[0]
+
+
