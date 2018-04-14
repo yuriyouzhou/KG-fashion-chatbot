@@ -144,7 +144,7 @@
                         console.log(response);
                         // response = JSON.parse(response);
                         // $('#messageText').val('');
-                        var answer = response;
+                        var answer = response["utterance"]["nlg"];
                         const chatPanel = document.getElementById("chatPanel");
                         $(".media-list").append('<li class="media"><div class="media-body"><div class="media"><div class="media-body">' + answer + '<hr/></div></div></div></li>');
                         $(".fixed-panel").stop().animate({ scrollTop: $(".fixed-panel")[0].scrollHeight}, 1000);
@@ -179,10 +179,11 @@
                     url: "/get",
                     data: {messageText: message},
                     success: function(response) {
-                        console.log(response);
                         response = JSON.parse(response);
+                        console.log(response);
                         $('#messageText').val('');
-                        var answer = JSON.stringify(response)
+                        var answer = response[0]["utterance"]["nlg"];
+
                         const chatPanel = document.getElementById("chatPanel");
                         $(".media-list").append('<li class="media"><div class="media-body"><div class="media"><div class="media-body">' + answer + '<hr/></div></div></div></li>');
 												$(".fixed-panel").stop().animate({ scrollTop: $(".fixed-panel")[0].scrollHeight}, 1000);
