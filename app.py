@@ -76,7 +76,7 @@ def get_bot_response():
         data.append(response)
 
         with open(path.join(app.root_path, './history/curr_history.txt'), 'w') as outfile:
-            outfile.write(json.dumps(data, outfile))
+            outfile.write(json.dumps(data))
 
         # print(response)
         if len(response) > 1 :
