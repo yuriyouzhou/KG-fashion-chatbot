@@ -61,17 +61,17 @@ def get_bot_response():
 
     with open('./history/1.json') as answer:
         history = json.load(answer)
-        try:
-            if "user" in history[index]["speaker"]:
-                index = index + 1
+        if index > len(history):
+            return json.dumps([end_response])
+        if "user" in history[index]["speaker"]:
+            index = index + 1
 
-            response = [history[index ]]
+        response = [history[index ]]
 
-            if index < len(history) and "system" in history[index + 1]["speaker"]:
+        if index+1 < len(history):
+            if "system" in history[index + 1]["speaker"]:
                 response.append(history[index + 1])
                 print(index+1)
-        except:
-            return json.dumps([end_response])
 
         data.append(response)
 
@@ -79,6 +79,8 @@ def get_bot_response():
             outfile.write(json.dumps(data, outfile))
 
         # print(response)
+        if len(response) > 1 :
+            response = merge_response(response)
         return json.dumps(response)
 
 
@@ -94,6 +96,29 @@ def upload():
 def clear_history():
     with open("./history/curr_history.txt", 'w') as output:
         output.write("null")
+
+def merge_response(response):
+    final_response =  {
+        "type": "greeting",
+        "speaker": "system",
+        "utterance": {
+            "images": None,
+            "false nlg": None,
+            "nlg": None
+        }
+    }
+    for r in response:
+        if final_response["utterance"]["images"] is None:
+            final_response["utterance"]["images"] = r["utterance"]["images"]
+        elif r["utterance"]["images"] is not None:
+            final_response["utterance"]["images"] += r["utterance"]["images"]
+
+        if final_response["utterance"]["nlg"] is None:
+            final_response["utterance"]["nlg"] = r["utterance"]["nlg"]
+        elif r["utterance"]["nlg"] is not None:
+            final_response["utterance"]["nlg"] += r["utterance"]["nlg"]
+    return [final_response]
+
 
 if __name__ == "__main__":
     app.run()

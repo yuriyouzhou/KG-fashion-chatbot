@@ -66,13 +66,55 @@
 			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#608f95', endColorstr='#1a1e3b',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 			}
 
+            div.gallery {
+    border: 1px solid #ccc;
+}
+
+div.gallery:hover {
+    border: 1px solid #777;
+}
+
+div.gallery img {
+    width: 100%;
+    height: auto;
+}
+
+div.desc {
+    padding: 15px;
+    text-align: center;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.responsive {
+    padding: 0 6px;
+    float: left;
+    width: 24.99999%;
+}
+
+@media only screen and (max-width: 700px) {
+    .responsive {
+        width: 49.99999%;
+        margin: 6px 0;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .responsive {
+        width: 100%;
+    }
+}
+
+
         </style>
     </head>
 <body>
         <div class="container background-color: rgb(255,0,255); ">
 		  
             <div class="row">
-                <h3 class="text-center"><small><strong>Sentiment Classification Playground</strong></small><font color="white"> Detect your emotions</font><small><strong></strong></small><font color="white"> </font></h3>
+                <h3 class="text-center"><small><strong>岂曰无衣</strong></small><font color="white"> 与子同袍</font><small><strong></strong></small><font color="white"> </font></h3>
 
                 <div class="col-md-4 col-md-offset-4">
 				
@@ -111,6 +153,18 @@
         <script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <script>
+            var get_image_div = function (src, i) {
+
+              var image_div = "<div class=\"responsive\">\n" +
+                  "  <div class=\"gallery\">\n" +
+                  "    <a target=\"_blank\" href=\"" + src + "\">\n" +
+                  "      <img src=\"" + src + "\" alt=\"Mountains\" width=\"200\" >\n" +
+                  "          <div class=\"desc\">Product "+i+"</div>"      +
+                  "    </a>\n" +
+                  "  </div>\n" +
+                  "</div>" ;
+              return image_div;
+            };
         $(function() {
 
 					$('.ephoto-upload').change(function(e){
@@ -182,12 +236,33 @@
                         response = JSON.parse(response);
                         console.log(response);
                         $('#messageText').val('');
-                        var answer = response[0]["utterance"]["nlg"];
+                        var text_response = response[0]["utterance"]["nlg"];
+                        var image_response = response[0]["utterance"]["images"];
 
-                        const chatPanel = document.getElementById("chatPanel");
-                        $(".media-list").append('<li class="media"><div class="media-body"><div class="media"><div class="media-body">' + answer + '<hr/></div></div></div></li>');
+                        if (text_response) {
+                       const chatPanel = document.getElementById("chatPanel");
+                        $(".media-list").append('<li class="media"><div class="media-body"><div class="media"><div class="media-body">' + text_response + '<hr/></div></div></div></li>');
 												$(".fixed-panel").stop().animate({ scrollTop: $(".fixed-panel")[0].scrollHeight}, 1000);
-			
+
+                        }
+
+                        if (image_response && image_response.length > 0) {
+                            console.log(image_response.length);
+                            var image_div = "";
+                            for (i=0; i<image_response.length; i++) {
+                                image_div += get_image_div(image_response[i], i+1)
+                            }
+                            const chatPanel = document.getElementById("chatPanel");
+
+                        $(".media-list").append('<li class="media"><div class="media-body"><div class="media"><div class="media-body">' + image_div + '</div></div></div><hr/></li>');
+
+                            $(".fixed-panel").stop().animate({ scrollTop: $(".fixed-panel")[0].scrollHeight}, 1000);
+
+
+                        }
+
+
+
                     },
                     error: function(error) {
                         console.log(error);
