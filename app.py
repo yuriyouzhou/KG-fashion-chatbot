@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request
 from flask_uploads import UploadSet, configure_uploads, IMAGES
 from chatterbot import ChatBot
+from predict import svm_intent, svm_response
+
 from chatterbot.trainers import ChatterBotCorpusTrainer
 import json
 from os import path
@@ -24,8 +26,12 @@ def home():
 @app.route("/get")
 def get_bot_response():
     msg = request.args.get('messageText')
+    intent_type = svm_intent(msg, app.root_path)
+    response_type = svm_response(msg, app.root_path)
+
     if "hi" == msg or "hello" == msg:
         clear_history()
+
 
     curr_turn = {
         "type": "greeting",
@@ -38,6 +44,8 @@ def get_bot_response():
     }
 
     end_response =  {
+        "intent_type": "non-functional",
+        "response_type": "ending nlg",
         "type": "greeting",
         "speaker": "system",
         "utterance": {
@@ -57,7 +65,6 @@ def get_bot_response():
             data = old_data
             data.append(curr_turn)
             index = len(data)
-            print("length of history", index)
 
     with open(path.join(app.root_path, './history/1.json')) as answer:
         history = json.load(answer)
@@ -66,7 +73,10 @@ def get_bot_response():
         if "user" in history[index]["speaker"]:
             index = index + 1
 
-        response = [history[index]]
+        response = history[index]
+        response["intent_type"] = intent_type
+        response["response_type"] = response_type
+        response = [response]
 
         prev_is_system = False
 
