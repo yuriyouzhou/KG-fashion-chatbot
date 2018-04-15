@@ -24,7 +24,7 @@ def home():
 @app.route("/get")
 def get_bot_response():
     msg = request.args.get('messageText')
-    if "hi" in msg or "hello" in msg:
+    if "hi" == msg or "hello" == msg:
         clear_history()
 
     curr_turn = {
@@ -68,19 +68,28 @@ def get_bot_response():
 
         response = [history[index]]
 
+        prev_is_system = False
+
         if index+1 < len(history):
             if "system" in history[index + 1]["speaker"]:
                 response.append(history[index + 1])
                 print(index+1)
+                prev_is_system = True
 
-        data.append(response)
+
+        if prev_is_system and index+2 < len(history):
+            if "system" in history[index + 2]["speaker"]:
+                response.append(history[index + 2])
+                print(index+2)
+
+        data = data + response
 
         with open(path.join(app.root_path, './history/curr_history.txt'), 'w') as outfile:
             outfile.write(json.dumps(data))
 
         # print(response)
-        if len(response) > 1 :
-            response = merge_response(response)
+        # if len(response) > 1 :
+        #     response = merge_response(response)
         return json.dumps(response)
 
 

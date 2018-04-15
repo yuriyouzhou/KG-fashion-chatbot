@@ -236,8 +236,9 @@ div.desc {
                         response = JSON.parse(response);
                         console.log(response);
                         $('#messageText').val('');
-                        var text_response = response[0]["utterance"]["nlg"];
-                        var image_response = response[0]["utterance"]["images"];
+                        for (var j=0; j<response.length; j++) {
+                                                    var text_response = response[j]["utterance"]["nlg"];
+                        var image_response = response[j]["utterance"]["images"];
 
                         if (text_response) {
                        const chatPanel = document.getElementById("chatPanel");
@@ -261,6 +262,7 @@ div.desc {
 
                         }
 
+                        }
 
 
                     },
