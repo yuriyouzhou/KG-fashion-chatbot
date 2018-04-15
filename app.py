@@ -28,6 +28,8 @@ def get_bot_response():
     msg = request.args.get('messageText')
     intent_type = svm_intent(msg, app.root_path)
     response_type = svm_response(msg, app.root_path)
+    with open(path.join(app.root_path, "history", "mapping.json")) as mapping_f:
+        infer_map = json.load(mapping_f)
 
     if "hi" == msg or "hello" == msg:
         clear_history()
@@ -76,6 +78,7 @@ def get_bot_response():
         response = history[index]
         response["intent_type"] = intent_type
         response["response_type"] = response_type
+        response["inference"] = infer_map[intent_type]
         response = [response]
 
         prev_is_system = False
@@ -90,7 +93,7 @@ def get_bot_response():
         if prev_is_system and index+2 < len(history):
             if "system" in history[index + 2]["speaker"]:
                 response.append(history[index + 2])
-                print(index+2)
+                print("here", index+2)
 
         data = data + response
 

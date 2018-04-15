@@ -1,0 +1,645 @@
+[
+ {
+  "speaker": "user", 
+  "type": "greeting", 
+  "utterance": {
+   "images": null, 
+   "false nlg": null, 
+   "nlg": "Hello"
+  }
+ }, 
+ {
+  "speaker": "system", 
+  "type": "greeting", 
+  "utterance": {
+   "images": null, 
+   "false nlg": null, 
+   "nlg": "Hi, please tell me how can i help you?"
+  }
+ }, 
+ {
+  "speaker": "user", 
+  "type": "question", 
+  "utterance": {
+   "images": null, 
+   "false nlg": null, 
+   "nlg": "Could you plz recommend some best tracksuit with solid type prints?"
+  }
+ }, 
+ {
+  "speaker": "system", 
+  "type": "answer", 
+  "utterance": {
+   "images": null, 
+   "false nlg": null, 
+   "nlg": "Absolutely. let me just quickly scan through my catalogue"
+  }
+ }, 
+ {
+  "type": "answer", 
+  "speaker": "system", 
+  "utterance": {
+   "false nlg": "", 
+   "false images": [
+    "https://images-na.ssl-images-amazon.com/images/I/416-LtNWoOL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41Cqb7MsqZL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41jmR3o2kBL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/51fNaCZXsML.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/51IDKBZdriL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/31PKPJMGSRL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41puequyRpL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/510xxZTUvcL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/418RPDguNOL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41WjACFWE5L.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41OkXI1xu8L.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41nkcXZjYmL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41a-IQ7ykEL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41aESLoKoXL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41XzCWiLTtL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/31wq7DftlmL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41Lp8W9F7yL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41SgIAHroFL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/3185pPQBqGL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41IjceCj59L.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/31ulM93BOPL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/31BksmAN6hL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/31LnJQxjUzL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41F15DSOJjL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41i5oniYl6L.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41KOV7Ud2EL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41YDD99dGcL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/31OTJqzy6oL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41XzvzyZnTL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/51TkbZXc4dL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41mN88MG%2BwL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/31LblPjH3gL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41f-sVxtuML.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/31Y9r0gsBsL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41mGgQTk2iL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41ufH1GpYeL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41rlcZuB1TL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/31t2-CdHEDL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/31-UcUmjgGL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/31QvC06LrvL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41ZCYXA8xvL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41evXqLIX6L.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/414UKA9cc8L.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/51DigzCLHmL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/417iZFKjwiL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41nLTvoZlKL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41cqHyi7UoL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41-78dKcHqL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41owsGroV%2BL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/319vmZHRauL.jpg"
+   ], 
+   "nlg": null, 
+   "images": [
+    "https://img.mytheresa.com/1088/1088/66/jpeg/catalog/product/72/P00308221.jpg", 
+    "https://img.mytheresa.com/1088/1088/66/jpeg/catalog/product/43/P00269561.jpg", 
+    "http://static3.jassets.com/p/Ixia-Mauve--Solid-Trackpants-2013-8545412-2-pdp_slider_m.jpg", 
+    "http://static3.jassets.com/p/Ixia-Pink-Solid-Trackpants-9429-6445412-2-pdp_slider_m.jpg", 
+    "https://img.mytheresa.com/1088/1088/66/jpeg/catalog/product/8f/P00267288.jpg"
+   ]
+  }
+ }, 
+ {
+  "speaker": "system", 
+  "type": "answer", 
+  "utterance": {
+   "images": [], 
+   "false images": [], 
+   "nlg": "For the first item, reebok presents these track pants to hit the park in style."
+  }
+ }, 
+ {
+  "speaker": "user", 
+  "type": "question", 
+  "question-type": "do_not_like_n_show_result", 
+  "utterance": {
+   "images": [
+    "http://static4.jassets.com/p/Reebok-Dark-Grey-Trackpants-9708-7945681-2-pdp_slider_m.jpg"
+   ], 
+   "false nlg": null, 
+   "nlg": "I dont like the 1st image . Show me something in color as in this image"
+  }, 
+  "question-subtype": "do_not_like_n_show_in_attribute_as_in_custom_image"
+ }, 
+ {
+  "type": "answer", 
+  "speaker": "system", 
+  "utterance": {
+   "false nlg": "", 
+   "false images": [
+    "https://images-na.ssl-images-amazon.com/images/I/416-LtNWoOL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41Cqb7MsqZL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41jmR3o2kBL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/51fNaCZXsML.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/51IDKBZdriL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/31PKPJMGSRL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41puequyRpL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/510xxZTUvcL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/418RPDguNOL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41WjACFWE5L.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41OkXI1xu8L.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41nkcXZjYmL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41a-IQ7ykEL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41aESLoKoXL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41XzCWiLTtL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/31wq7DftlmL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41Lp8W9F7yL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41SgIAHroFL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/3185pPQBqGL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41IjceCj59L.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/31ulM93BOPL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/31BksmAN6hL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/31LnJQxjUzL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41F15DSOJjL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41i5oniYl6L.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41KOV7Ud2EL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41YDD99dGcL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/31OTJqzy6oL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41XzvzyZnTL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/51TkbZXc4dL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41mN88MG%2BwL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/31LblPjH3gL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41f-sVxtuML.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/31Y9r0gsBsL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41mGgQTk2iL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41ufH1GpYeL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41rlcZuB1TL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/31t2-CdHEDL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/31-UcUmjgGL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/31QvC06LrvL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41ZCYXA8xvL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41evXqLIX6L.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/414UKA9cc8L.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/51DigzCLHmL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/417iZFKjwiL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41nLTvoZlKL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41cqHyi7UoL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41-78dKcHqL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41owsGroV%2BL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/319vmZHRauL.jpg"
+   ], 
+   "nlg": null, 
+   "images": [
+    "http://static4.jassets.com/p/Reebok-Dark-Grey-Trackpants-9708-7945681-2-pdp_slider_m.jpg", 
+    "http://ecx.images-amazon.com/images/I/31l%2B4UrzXoL.jpg", 
+    "http://static2.jassets.com/p/Antigravity-Dark-Grey-Solid-Trackpant-9416-8945591-2-pdp_slider_m.jpg", 
+    "http://static4.jassets.com/p/Puma-Ferrari-Sweat-Dark-Grey-Trackpant-9749-0872581-2-pdp_slider_m.jpg", 
+    "http://static2.jassets.com/p/Reebok-Y-Jogger-Dark-Grey-Trackpant-3110-5506891-2-pdp_slider_m.jpg"
+   ]
+  }
+ }, 
+ {
+  "speaker": "system", 
+  "type": "answer", 
+  "utterance": {
+   "images": [], 
+   "false images": [], 
+   "nlg": "For the 3rd one, get a sporty and stylish look by wearing these track pants for women from antigravity. See the 1st image, feel comfortable wearing these pants with a t-shirt and running shoes while you track for miles. And regarding the 4th one, look unique and smart by wearing these dark grey coloured track pants for women from puma."
+  }
+ }, 
+ {
+  "speaker": "user", 
+  "type": "question", 
+  "question-type": "go_with", 
+  "utterance": {
+   "images": null, 
+   "false nlg": null, 
+   "nlg": "\u2018What could you say about footwear having sports type? Will it go well with any of these?"
+  }, 
+  "question-subtype": "ask_if_attribute_synset_will_go_with_any"
+ }, 
+ {
+  "type": "answer", 
+  "speaker": "system", 
+  "utterance": {
+   "images": null, 
+   "false images": null, 
+   "false nlg": "Yes", 
+   "nlg": "Yes"
+  }
+ }, 
+ {
+  "speaker": "user", 
+  "type": "question", 
+  "question-type": "suited_for", 
+  "utterance": {
+   "images": null, 
+   "false nlg": null, 
+   "nlg": "\u2018What do you think about the 4th result? Is it suited for regular washing?"
+  }, 
+  "question-subtype": "ask_if_n_suited_for"
+ }, 
+ {
+  "type": "answer", 
+  "speaker": "system", 
+  "utterance": {
+   "images": null, 
+   "false images": null, 
+   "false nlg": "Yes", 
+   "nlg": "Yes"
+  }
+ }, 
+ {
+  "speaker": "user", 
+  "type": "repeat-question", 
+  "question-type": "suited_for", 
+  "utterance": {
+   "images": null, 
+   "false nlg": null, 
+   "nlg": "And for the 3rd results?"
+  }, 
+  "question-subtype": "ask_if_n_suited_for"
+ }, 
+ {
+  "type": "answer", 
+  "speaker": "system", 
+  "utterance": {
+   "images": null, 
+   "false images": null, 
+   "false nlg": "Yes", 
+   "nlg": "Yes"
+  }
+ }, 
+ {
+  "speaker": "user", 
+  "type": "question", 
+  "question-type": "do_not_like_n_show_result", 
+  "utterance": {
+   "images": null, 
+   "false nlg": null, 
+   "nlg": "I dont like the 5th result . Show me something in style as in the 4th image"
+  }, 
+  "question-subtype": "do_not_like_n_show_in_attribute_as_in_m"
+ }, 
+ {
+  "type": "answer", 
+  "speaker": "system", 
+  "utterance": {
+   "false nlg": "", 
+   "false images": [
+    "https://images-na.ssl-images-amazon.com/images/I/416-LtNWoOL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41Cqb7MsqZL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41jmR3o2kBL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/51fNaCZXsML.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/51IDKBZdriL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/31PKPJMGSRL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41puequyRpL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/510xxZTUvcL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/418RPDguNOL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41WjACFWE5L.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41OkXI1xu8L.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41nkcXZjYmL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41a-IQ7ykEL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41aESLoKoXL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41XzCWiLTtL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/31wq7DftlmL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41Lp8W9F7yL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41SgIAHroFL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/3185pPQBqGL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41IjceCj59L.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/31ulM93BOPL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/31BksmAN6hL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/31LnJQxjUzL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41F15DSOJjL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41i5oniYl6L.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41KOV7Ud2EL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41YDD99dGcL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/31OTJqzy6oL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41XzvzyZnTL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/51TkbZXc4dL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41mN88MG%2BwL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/31LblPjH3gL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41f-sVxtuML.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/31Y9r0gsBsL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41mGgQTk2iL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41ufH1GpYeL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41rlcZuB1TL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/31t2-CdHEDL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/31-UcUmjgGL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/31QvC06LrvL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41evXqLIX6L.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/414UKA9cc8L.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/51DigzCLHmL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/417iZFKjwiL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41nLTvoZlKL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41cqHyi7UoL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41-78dKcHqL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41owsGroV%2BL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/319vmZHRauL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/31fFOPBC%2BbL.jpg"
+   ], 
+   "nlg": null, 
+   "images": [
+    "http://static3.jassets.com/p/Pluss-Grey-TrackPants-2586-409412-2-pdp_slider_m.jpg", 
+    "http://static2.jassets.com/p/Adidas-Woven-Black-Trackpants-7205-0302591-2-pdp_slider_m.jpg", 
+    "http://static3.jassets.com/p/Asics-Knit-Black-Trackpants-2736-8851312-2-pdp_slider_m.jpg", 
+    "https://img.mytheresa.com/1088/1088/66/jpeg/catalog/product/43/P00269561_b1.jpg"
+    "http://static4.jassets.com/p/Reebok-El-Black-Trackpants-7907-3743361-2-pdp_slider_m.jpg"
+   ]
+  }
+ }, 
+ {
+  "speaker": "system", 
+  "type": "answer", 
+  "utterance": {
+   "images": [], 
+   "false images": [], 
+   "nlg": "What you see in the 1st item, if your love handles are giving you sleepless nights, then kick-start your workout sessions with these grey coloured trackpants from pluss. For the second one, stay relaxed at home wearing these multicoloured joggers from dorothy perkins. And for the 4th item, don a cool and sporty look wearing these black coloured track pants from the house of asics."
+  }
+ }, 
+ {
+  "speaker": "user", 
+  "type": "question", 
+  "question-type": "suited_for", 
+  "utterance": {
+   "images": null, 
+   "false nlg": null, 
+   "nlg": "Will trackwear in the 3rd image be suitable for machine clean?"
+  }, 
+  "question-subtype": "ask_if_synset_in_n_suited_for"
+ }, 
+ {
+  "type": "answer", 
+  "speaker": "system", 
+  "utterance": {
+   "images": null, 
+   "false images": null, 
+   "false nlg": "Yes", 
+   "nlg": "Yes"
+  }
+ }, 
+ {
+  "speaker": "user", 
+  "type": "question", 
+  "question-type": "celebrity", 
+  "utterance": {
+   "images": null, 
+   "false nlg": null, 
+   "nlg": "Does celebrity cel_263 usually wear the kind of trackwear in the 1st image?"
+  }, 
+  "question-subtype": "does_celebrity_endorse_n"
+ }, 
+ {
+  "type": "answer", 
+  "speaker": "system", 
+  "utterance": {
+   "images": null, 
+   "false images": null, 
+   "false nlg": "No.", 
+   "nlg": "No."
+  }
+ }, 
+ {
+  "speaker": "user", 
+  "type": "question", 
+  "question-type": "ask_attribute", 
+  "utterance": {
+   "images": null, 
+   "false nlg": null, 
+   "nlg": "What is the style, brand length in the 1st result?"
+  }, 
+  "question-subtype": "ask_attributes_in_n"
+ }, 
+ {
+  "type": "answer", 
+  "speaker": "system", 
+  "utterance": {
+   "images": null, 
+   "false images": null, 
+   "false nlg": "the trackwear in the 1st image has full length hip style pluss brand", 
+   "nlg": "the trackwear in the 1st image has full length hip style pluss brand"
+  }
+ }, 
+ {
+  "speaker": "user", 
+  "type": "repeat-question", 
+  "question-type": "ask_attribute", 
+  "utterance": {
+   "images": null, 
+   "false nlg": null, 
+   "nlg": "And how about style and length in the 2nd one?"
+  }, 
+  "question-subtype": "ask_attributes_in_n"
+ }, 
+ {
+  "type": "answer", 
+  "speaker": "system", 
+  "utterance": {
+   "images": null, 
+   "false images": null, 
+   "false nlg": "the trackwear in the 2nd image has hip style full length", 
+   "nlg": "the trackwear in the 2nd image has hip style full length"
+  }
+ }, 
+ {
+  "speaker": "user", 
+  "type": "question", 
+  "question-type": "like_n_show_result", 
+  "utterance": {
+   "images": [
+    "http://static3.jassets.com/p/Ixia-Blue--Solid-Trackpants-7721-1545412-2-pdp_slider_m.jpg"
+   ], 
+   "false nlg": null, 
+   "nlg": "I like the 5th image . Show me something like it but in brand as in this image"
+  }, 
+  "question-subtype": "like_n_show_in_attribute_as_in_custom_image"
+ }, 
+ {
+  "type": "answer", 
+  "speaker": "system", 
+  "utterance": {
+   "false nlg": "", 
+   "false images": [
+    "https://images-na.ssl-images-amazon.com/images/I/416-LtNWoOL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41Cqb7MsqZL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41jmR3o2kBL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/51fNaCZXsML.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/51IDKBZdriL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/31PKPJMGSRL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41puequyRpL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/510xxZTUvcL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/418RPDguNOL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41WjACFWE5L.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41OkXI1xu8L.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41nkcXZjYmL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41a-IQ7ykEL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41XzCWiLTtL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/31wq7DftlmL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41Lp8W9F7yL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41SgIAHroFL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/3185pPQBqGL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41IjceCj59L.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/31ulM93BOPL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/31BksmAN6hL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/31LnJQxjUzL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41F15DSOJjL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41i5oniYl6L.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41KOV7Ud2EL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41YDD99dGcL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/31OTJqzy6oL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41XzvzyZnTL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/51TkbZXc4dL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41mN88MG%2BwL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/31LblPjH3gL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41f-sVxtuML.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/31Y9r0gsBsL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41mGgQTk2iL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41ufH1GpYeL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41rlcZuB1TL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/31t2-CdHEDL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/31-UcUmjgGL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/31QvC06LrvL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41evXqLIX6L.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/414UKA9cc8L.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41nLTvoZlKL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41cqHyi7UoL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41-78dKcHqL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41owsGroV%2BL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/319vmZHRauL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/31fFOPBC%2BbL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41U%2BBEiIELL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41YeUiCRBNL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/51GnDfPiTCL.jpg"
+   ], 
+   "nlg": "Sorry i dont have any in hip but do you want to see some in different style", 
+   "images": [
+    "http://static3.jassets.com/p/Ixia-Yellow-Solid-Trackpants-0216-2445412-2-pdp_slider_m.jpg"
+   ]
+  }
+ }, 
+ {
+  "speaker": "system", 
+  "type": "answer", 
+  "utterance": {
+   "images": [], 
+   "false images": [], 
+   "nlg": "In the 1st image, look stylish even when out for jogging, courtesy these yellow coloured track pants from ixia."
+  }
+ }, 
+ {
+  "speaker": "user", 
+  "type": "question", 
+  "question-type": "like_n_show_result", 
+  "utterance": {
+   "images": null, 
+   "false nlg": null, 
+   "nlg": "Show me more like the 1st trackwear but in ankle length type. I liked it"
+  }, 
+  "question-subtype": "like_n_show_in_attribute_complement_value"
+ }, 
+ {
+  "type": "answer", 
+  "speaker": "system", 
+  "utterance": {
+   "false nlg": "", 
+   "false images": [
+    "https://images-na.ssl-images-amazon.com/images/I/416-LtNWoOL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41Cqb7MsqZL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41jmR3o2kBL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/51fNaCZXsML.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/51IDKBZdriL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/31PKPJMGSRL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41puequyRpL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/510xxZTUvcL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/418RPDguNOL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41WjACFWE5L.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41OkXI1xu8L.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41nkcXZjYmL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41a-IQ7ykEL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41aESLoKoXL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41XzCWiLTtL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/31wq7DftlmL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41Lp8W9F7yL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41SgIAHroFL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/3185pPQBqGL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41IjceCj59L.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/31ulM93BOPL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/31BksmAN6hL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/31LnJQxjUzL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41F15DSOJjL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41i5oniYl6L.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41KOV7Ud2EL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/31OTJqzy6oL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41XzvzyZnTL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/51TkbZXc4dL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41mN88MG%2BwL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/31LblPjH3gL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41f-sVxtuML.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/31Y9r0gsBsL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41mGgQTk2iL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41ufH1GpYeL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41rlcZuB1TL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/31t2-CdHEDL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/31-UcUmjgGL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/31QvC06LrvL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41ZCYXA8xvL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41evXqLIX6L.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/414UKA9cc8L.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/51DigzCLHmL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/417iZFKjwiL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41nLTvoZlKL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41cqHyi7UoL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41-78dKcHqL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41owsGroV%2BL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/319vmZHRauL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/31fFOPBC%2BbL.jpg"
+   ], 
+   "nlg": "Sorry i dont think i have any ankle length but would you be interested in seeing some in full", 
+   "images": [
+    "http://static4.jassets.com/p/As-Original-By-American-Swan-Mustard-Yellow-Solid-Trackpant-6464-8742081-2-pdp_slider_m.jpg", 
+    "http://static1.jassets.com/p/Tshirt-Company-Ultra-Super-Soft-Premium-Mustard-Trackpant-0018-522018-2-pdp_slider_m.jpg"
+   ]
+  }
+ }, 
+ {
+  "speaker": "system", 
+  "type": "answer", 
+  "utterance": {
+   "images": [], 
+   "false images": [], 
+   "nlg": "For the 1st one, look stylish even when out for jogging, courtesy these yellow coloured track pants from as originals."
+  }
+ }, 
+ {
+  "speaker": "user", 
+  "type": "question", 
+  "question-type": "sort_results", 
+  "utterance": {
+   "images": null, 
+   "false nlg": null, 
+   "nlg": "Sort these by review rating"
+  }, 
+  "question-subtype": "sort_by_reviewRating"
+ }, 
+ {
+  "type": "answer", 
+  "speaker": "system", 
+  "utterance": {
+   "images": null, 
+   "false images": null, 
+   "false nlg": "Sorry i do not have the review rating information for these", 
+   "nlg": "Sorry i do not have the review rating information for these"
+  }
+ }, 
+ {
+  "speaker": "user", 
+  "type": "exit-message", 
+  "utterance": {
+   "images": null, 
+   "false nlg": null, 
+   "nlg": "Thanks all this was very helpful"
+  }
+ }, 
+ {
+  "speaker": "system", 
+  "type": "exit-message", 
+  "utterance": {
+   "images": null, 
+   "false nlg": null, 
+   "nlg": "Sure. Would be glad to be of help in the future again"
+  }
+ }
+]

@@ -1,0 +1,25 @@
+raw_label,Mapping
+exit message,See you next time ;) 
+greeting,I guess your intention is greeting
+question,I guess your intention is to ask product attributes
+question ask attribute,I guess your intention is to ask product attributes
+question buy,I guess your intention is to buy this product
+question celebrity,I guess your intention is to figure out related celebrities
+question filter results,I guess your intention is to filter some recommendations
+question go with,I guess your intention is to find a paring item
+question show orientation,I guess your intention is to see other orientations
+question show similar to,I guess your intention is to find similar products
+question sort results,I guess your intention is to sort my recommendations
+question suited for,I guess your intention is to find a paring item
+repeat question ask attribute,I guess your intention is to ask product attributes
+repeat question celebrity,I guess your intention is to figure out related celebrities
+repeat question go with,I guess your intention is to find a paring item
+repeat question show orientation,I guess your intention is to see some other orientations
+repeat question suited for,I guess your intention is to ask product attributes
+user info,I guess your intention is to feed user information
+question do not like earlier show result,I guess you don't like the earlier show result
+question do not like n show result,I guess you don't like the earlier show result
+question do not like show result,I guess you don't like the earlier show result
+question like earlier show result,I guess you like the earlier show result
+question like n show result,I guess you don't like the earlier show result
+question like show result,I guess you don't like the earlier show result
