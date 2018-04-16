@@ -32,6 +32,7 @@ def get_bot_response():
         infer_map = json.load(mapping_f)
 
     if "hi" == msg or "hello" == msg:
+        print(msg)
         clear_history()
 
 
