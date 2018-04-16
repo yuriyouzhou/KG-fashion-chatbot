@@ -147,27 +147,6 @@
   }
  }, 
  {
-  "question-type": "ask_attribute", 
-  "speaker": "user", 
-  "utterance": {
-   "images": null, 
-   "false nlg": null, 
-   "nlg": "What is the color of the item in the 2nd image?"
-  }, 
-  "question-subtype": "ask_attribute_in_ns", 
-  "type": "question"
- }, 
- {
-  "speaker": "system", 
-  "type": "answer", 
-  "utterance": {
-   "images": null, 
-   "false images": null, 
-   "false nlg": "The color is two tone in the 3rd image; three in the 2nd image", 
-   "nlg": "The color of the second item is lake blue"
-  }
- },
- {
   "question-type": "do_not_like_show_result", 
   "speaker": "user", 
   "utterance": {
@@ -223,7 +202,7 @@
    "nlg": null, 
    "images": [
     "https://cdn-images.farfetch-contents.com/12/54/85/49/12548549_11955618_480.jpg", 
-    "hhttps://cdn-images.farfetch-contents.com/12/54/85/49/12548549_11955621_480.jpg", 
+    "https://cdn-images.farfetch-contents.com/12/54/85/49/12548549_11955621_480.jpg", 
     "https://cdn-images.farfetch-contents.com/12/54/85/49/12548549_11955617_480.jpg"
    ]
   }
@@ -274,77 +253,25 @@
   "speaker": "system", 
   "type": "answer", 
   "utterance": {
-   "images": null, 
-   "false images": null, 
-   "false nlg": "It can go well with moc style, natural-round type footwear and with classy or refined style, striped,stripe printed, slim closing trousers", 
-   "nlg": "It can go well with denim style, natural-round type footwear and with classy or refined style, striped printed, slim trousers and denim jackets"
-  }
- }, 
-  {
-  "question-type": "go_with", 
-  "speaker": "user", 
-  "utterance": {
-   "images": null, 
-   "false nlg": null, 
-   "nlg": "like what kind of kacket?"
-  }, 
-  "question-subtype": "ask_what_will_go_with_n", 
-  "type": "question"
- }, 
-  {
-  "speaker": "system", 
-  "type": "answer", 
-  "utterance": {
-   "images": null, 
-   "false images": null, 
-   "false nlg": "It can go well with moc style, natural-round type footwear and with classy or refined style, striped,stripe printed, slim closing trousers", 
-   "nlg": "These are all trendy matches for you."
-  }
- },
- {
-  "speaker": "system", 
-  "type": "answer", 
-  "utterance": {
-   "false nlg": "", 
-   "false images": [], 
-   "nlg": null, 
    "images": [
     "https://cdn-images.farfetch-contents.com/12/92/04/92/12920492_13292452_480.jpg", 
     "https://cdn-images.farfetch-contents.com/12/90/37/52/12903752_13230685_480.jpg", 
     "https://cdn-images.farfetch-contents.com/12/89/02/71/12890271_13251676_480.jpg", 
     "https://cdn-images.farfetch-contents.com/12/56/23/93/12562393_11967578_480.jpg", 
     "https://cdn-images.farfetch-contents.com/12/57/23/63/12572363_12154559_480.jpg"
-   ]
-  }
- }, 
- {
-  "question-type": "go_with", 
-  "speaker": "user", 
-  "utterance": {
-   "images": null, 
-   "false nlg": null, 
-   "nlg": "And what do you think, with the 4th one?"
-  }, 
-  "question-subtype": "ask_what_will_go_with_n", 
-  "type": "repeat-question"
- }, 
- {
-  "speaker": "system", 
-  "type": "answer", 
-  "utterance": {
-   "images": null, 
+   ], 
    "false images": null, 
-   "false nlg": "", 
-   "nlg": "It can go well with Derby shoes, preppy style sunglasses and with trousers or skirts in solid color"
+   "false nlg": "It can go well with moc style, natural-round type footwear and with classy or refined style, striped,stripe printed, slim closing trousers", 
+   "nlg": "These are all trendy matches for you.  They can go well with Derby shoes, preppy style sunglasses and with trousers or skirts in solid color"
   }
- }, 
+ },  
  {
   "question-type": "celebrity", 
   "speaker": "user", 
   "utterance": {
    "images": null, 
    "false nlg": null, 
-   "nlg": "Does celebrities usually wear the kind of casual blouse in the 1st image?"
+   "nlg": "Does celebrities usually wear the kind of jacket in the 3rd image?"
   }, 
   "question-subtype": "does_celebrity_endorse_n", 
   "type": "question"
@@ -364,7 +291,7 @@
   "utterance": {
    "images": null, 
    "false nlg": null, 
-   "nlg": "\u2018what brand is it in the 3rd image?\u2019"
+   "nlg": "\u2018what brand is it?\u2019"
   }, 
   "question-subtype": "ask_attribute_in_synset_n", 
   "type": "question"
@@ -376,7 +303,7 @@
    "images": null, 
    "false images": null, 
    "false nlg": "The brand in 3rd image is STELLA MCCARTNEY", 
-   "nlg": "The brand in 3rd image is mezlan"
+   "nlg": "The brand in 3rd image is Tommy Hilfiger"
   }
  }, 
  {
@@ -385,7 +312,7 @@
   "utterance": {
    "images": null, 
    "false nlg": null, 
-   "nlg": "I want to buy the 3rd one"
+   "nlg": "I want to buy it"
   }, 
   "question-subtype": "buy_n", 
   "type": "question"
