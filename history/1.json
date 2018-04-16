@@ -254,11 +254,10 @@
   "type": "answer", 
   "utterance": {
    "images": [
-    "https://cdn-images.farfetch-contents.com/12/92/04/92/12920492_13292452_480.jpg", 
-    "https://cdn-images.farfetch-contents.com/12/90/37/52/12903752_13230685_480.jpg", 
-    "https://cdn-images.farfetch-contents.com/12/89/02/71/12890271_13251676_480.jpg", 
-    "https://cdn-images.farfetch-contents.com/12/56/23/93/12562393_11967578_480.jpg", 
-    "https://cdn-images.farfetch-contents.com/12/57/23/63/12572363_12154559_480.jpg"
+    "https://cdn-images.farfetch-contents.com/12/88/84/12/12888412_13111007_480.jpg",
+    "https://cdn-images.farfetch-contents.com/12/83/78/05/12837805_13048146_480.jpg",
+    "https://cdn-images.farfetch-contents.com/12/83/05/41/12830541_12951859_480.jpg",
+    "https://cdn-images.farfetch-contents.com/12/62/94/78/12629478_12167579_480.jpg"
    ], 
    "false images": null, 
    "false nlg": "It can go well with moc style, natural-round type footwear and with classy or refined style, striped,stripe printed, slim closing trousers", 
@@ -282,7 +281,8 @@
   "utterance": {
    "images": null, 
    "false images": null, 
-   "false nlg": "Yes. Kendall Jenner, Gigi Hadid also endorse this type of causal blouse"
+   "false nlg": null,
+   "nlg": "the kind of casual blouse usually worn by celebrity cel_821."
   }
  }, 
  {

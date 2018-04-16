@@ -46,9 +46,9 @@ def get_bot_response():
     }
 
     end_response =  {
-        "intent_type": "non-functional",
+        "intent_type": "exit message",
         "response_type": "ending nlg",
-        "type": "greeting",
+        "type": "exit message",
         "speaker": "system",
         "utterance": {
             "images": None,
@@ -56,6 +56,7 @@ def get_bot_response():
             "nlg": "This conversation is over  :)"
         }
     }
+    end_response["inference"] = infer_map["exit message"]
 
 
     with open(path.join(app.root_path, './history/curr_history.txt')) as data_file:
