@@ -23,7 +23,7 @@
   "utterance": {
    "images": null, 
    "false nlg": null, 
-   "nlg": "I would like to shop for some blouses."
+   "nlg": "Could you show me some blouse for causual school outfit?"
   }
  }, 
  {
@@ -32,25 +32,7 @@
   "utterance": {
    "images": null, 
    "false nlg": null, 
-   "nlg": "May I know your age?"
-  }
- }, 
-  {
-  "type": "question", 
-  "speaker": "user", 
-  "utterance": {
-   "images": null, 
-   "false nlg": null, 
-   "nlg": "I am 22, want to buy some casual blouses for daily school outfit."
-  }
- }, 
- {
-  "type": "answer", 
-  "speaker": "system", 
-  "utterance": {
-   "images": null, 
-   "false nlg": null, 
-   "nlg": "Thanks for the info. I'll just make a quick search through my catalog"
+   "nlg": "Good! I'll just make a quick search through my catalog"
   }
  }, 
  {
@@ -74,7 +56,7 @@
   "utterance": {
    "images": null, 
    "false nlg": null, 
-   "nlg": "Could you recommend some similar items like that in the third picture?"
+   "nlg": "Could you show similar items as in the 3rd picture?"
   }, 
   "question-subtype": "show_in_attribute_as_in_n", 
   "type": "question"
@@ -109,7 +91,7 @@
   "utterance": {
    "images": null, 
    "false nlg": null, 
-   "nlg": "Do you think is the material is silk in the 2rd image?"
+   "nlg": "Is the material silk in the 2rd image?"
   }, 
   "question-subtype": "is_attribute_in_synset_n", 
   "type": "question"
@@ -130,7 +112,7 @@
   "utterance": {
    "images": null, 
    "false nlg": null, 
-   "nlg": "Could you recommend some other blouse in the same material?"
+   "nlg": "then could you show some other blouse in the same material?"
   }, 
   "question-subtype": "show_in_attribute_as_in_n", 
   "type": "question"
@@ -373,8 +355,7 @@
   "utterance": {
    "images": null, 
    "false images": null, 
-   "nlg": null,
-   "nlg": "Yes. Kendall Jenner, Gigi Hadid also endorse this type of causal blouse"
+   "false nlg": "Yes. Kendall Jenner, Gigi Hadid also endorse this type of causal blouse"
   }
  }, 
  {
