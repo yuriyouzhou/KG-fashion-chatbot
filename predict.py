@@ -27,8 +27,8 @@ def svm_intent(input_text, curr_path):
 
 def svm_response(input_text, curr_path):
     model = joblib.load(path.join(curr_path,'response_svm.pkl'))
-    voc = joblib.load(path.join(curr_path, 'vocabulary.pkl'))
-    idf = joblib.load(path.join(curr_path, 'idf.pkl'))
+    voc = joblib.load(path.join(curr_path, 'response_vocabulary.pkl'))
+    idf = joblib.load(path.join(curr_path, 'response_idf.pkl'))
     unigram = input_text.strip().split(' ')
     bigram = [i + ' ' + j for (i,j) in ngrams(input_text.strip().split(' '),2)]
     x = unigram + bigram

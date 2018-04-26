@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from flask_uploads import UploadSet, configure_uploads, IMAGES
+# from flask_uploads import UploadSet, configure_uploads, IMAGES
 from chatterbot import ChatBot
 from predict import svm_intent, svm_response
 
@@ -8,11 +8,11 @@ import json
 from os import path
 
 app = Flask(__name__)
-photos = UploadSet('photos', IMAGES)
-app.config['UPLOADED_PHOTOS_DEST'] = 'static/img'
-configure_uploads(app, photos)
+# photos = UploadSet('photos', IMAGES)
+# app.config['UPLOADED_PHOTOS_DEST'] = 'static/img'
+# configure_uploads(app, photos)
 
-english_bot = ChatBot("Chatterbot", storage_adapter="chatterbot.storage.SQLStorageAdapter")
+# english_bot = ChatBot("Chatterbot", storage_adapter="chatterbot.storage.SQLStorageAdapter")
 
 # english_bot.set_trainer(ChatterBotCorpusTrainer)
 # english_bot.train("chatterbot.corpus.english")
@@ -28,7 +28,7 @@ def get_bot_response():
     msg = request.args.get('messageText')
     intent_type = svm_intent(msg, app.root_path)
     response_type = svm_response(msg, app.root_path)
-    with open(path.join(app.root_path, "history", "mapping.json")) as mapping_f:
+    with open(path.join(app.root_path, "mapping.json")) as mapping_f:
         infer_map = json.load(mapping_f)
 
     if "hi" == msg or "hello" == msg:
