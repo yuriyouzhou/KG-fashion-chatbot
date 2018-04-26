@@ -67,7 +67,19 @@ def get_bot_response():
     response_type = svm_response(msg, app.root_path)
 
     if "hi" == msg or "hello" == msg:
-        clear_history()
+        response = clear_history()
+        pred_sent = run_text_prediction(app.root_path)[-1]
+        response = [{
+            "type": response_type,
+            "speaker": "system",
+            "utterance": {
+                "images": None,
+                "false nlg": None,
+                "nlg": pred_sent
+            }
+        }]
+        return json.dumps(response)
+
 
     curr_turn = {
         "type": intent_type,
@@ -92,14 +104,6 @@ def get_bot_response():
         with open(path.join(app.root_path, './history/curr_history.json'), 'w') as output:
             output.write(json.dumps(data))
 
-    response = get_fake_response(index, intent_type, response_type)
-
-
-    if len(data) < 2:
-        data = data + response
-        with open(path.join(app.root_path, './history/curr_history.json'), 'w') as outfile:
-            outfile.write(json.dumps(data))
-
 
     pred_sent = run_text_prediction(app.root_path)[-1]
     response = [{
@@ -112,10 +116,9 @@ def get_bot_response():
         }
     }]
 
-    if len(data) >= 2:
-        data = data + response
-        with open(path.join(app.root_path, './history/curr_history.json'), 'w') as outfile:
-            outfile.write(json.dumps(data))
+    data = data + response
+    with open(path.join(app.root_path, './history/curr_history.json'), 'w') as outfile:
+        outfile.write(json.dumps(data))
     return json.dumps(response)
 
 
@@ -130,7 +133,38 @@ def upload():
 
 def clear_history():
     with open(path.join(app.root_path, './history/curr_history.json'), 'w') as output:
-        output.write("null")
+        history = """
+        [
+ {
+  "type": "greeting", 
+  "speaker": "user", 
+  "utterance": {
+   "images": null, 
+   "false nlg": null, 
+   "nlg": "Hello"
+  }
+ }, 
+ {
+  "type": "greeting", 
+  "speaker": "system", 
+  "utterance": {
+   "images": null, 
+   "false nlg": null, 
+   "nlg": "Hi, how can i help you with something today?"
+  }
+ }]
+        """
+        response = [{
+            "type": "greeting",
+            "speaker": "system",
+            "utterance": {
+                "images": None,
+                "false nlg": None,
+                "nlg": "Hi, how can i help you with something today?"
+            }
+        }]
+        output.write(history)
+        return response
 
 def merge_response(response):
     final_response =  {
