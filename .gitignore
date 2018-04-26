@@ -5,3 +5,10 @@ static/img
 dataset/
 data/
 *.pyc
+text_task_resnet/.ipynb_checkpoints/
+text_task_resnet/Train.ipynb
+text_task_resnet/dump/
+text_task_resnet/model/
+text_task_resnet/test_output/
+text_task_resnet/*.txt
+history/curr_history.txt
