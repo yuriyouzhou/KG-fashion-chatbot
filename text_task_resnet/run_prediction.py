@@ -5,8 +5,14 @@ import numpy as np
 from params_test_v2 import get_params
 from hierarchy_model_text import Hierarchical_seq_model_text
 from read_data_task1 import get_batch_data
+from prepare_data_for_hred import PrepareData
 import tensorflow as tf
 import math
+
+start_symbol_index = 0
+end_symbol_index = 1
+unk_symbol_index = 2
+pad_symbol_index = 3
 
 def check_dir(param):
     '''Checks whether model and logs directtory exists, if not then creates both directories for saving best model and logs.
@@ -137,41 +143,30 @@ def write_to_file(pred_op, true_op, param):
     print 'Test (true and predicted) output written to corresponding files'
 
 def perform_test(sess, model, param, logits, losses, vocab):
+    print("loading test file from ", param['test_data_file'])
     test_data = pkl.load(open(param['test_data_file']))
-    print "Test dialogues loaded"
+    print "Chat history loaded"
     predicted_sentence = []
-    test_loss = 0
     n_batches = int(math.ceil(float(len(test_data)) / float(param['batch_size'])))
     test_text_targets = load_valid_test_target(test_data)
     true_sentence = []
     for i in range(n_batches):
-        if i % 10 == 0:
-            print 'finished ', i, 'batches '
         batch_dict = test_data[i * param['batch_size']:(i + 1) * param['batch_size']]
         batch_target_word_ids = test_text_targets[i * param['batch_size']:(i + 1) * param['batch_size']]
         batch_target_sentences = map_id_to_word(batch_target_word_ids, vocab)
         test_op, batch_loss = get_test_loss(sess, model, batch_dict, param, logits, losses)
-        batch_predicted_sentence, prob_predicted_words, prob_true_words = get_predicted_sentence(test_op,
-                                                                                                 batch_target_word_ids,
-                                                                                                 vocab)
+        batch_predicted_sentence, _, _ = get_predicted_sentence(test_op, batch_target_word_ids, vocab)
         predicted_sentence.extend(batch_predicted_sentence)
-        print_pred_true_op(batch_predicted_sentence, prob_predicted_words, prob_true_words, batch_target_sentences, i,
-                           batch_loss)
         true_sentence.extend(batch_target_sentences)
     test_predicted_sentence = predicted_sentence[0:len(test_text_targets)]
     test_true_sentence = true_sentence[0:len(test_text_targets)]
     write_to_file(test_predicted_sentence, test_true_sentence, param)
-    print ('average test loss is =%.6f' % (float(test_loss) / float(len(test_data))))
-    sys.stdout.flush()
-
+    return predicted_sentence
 
 def run_test(param):
     vocab = pkl.load(open(param['vocab_file'], "rb"))
     vocab_size = len(vocab)
     param['decoder_words'] = vocab_size
-    print 'writing terminal output to file'
-    f_out = open(param['terminal_op'], 'w')
-    sys.stdout = f_out
     check_dir(param)
     with tf.Graph().as_default():
         model = Hierarchical_seq_model_text('text', param['text_embedding_size'], param['image_embedding_size'],
@@ -183,13 +178,10 @@ def run_test(param):
         model.create_placeholder()
         logits = model.inference()
         losses = model.loss_task_text(logits)
-        # train_op, gradients = model.train(losses)
         print "model created"
-        sys.stdout.flush()
         saver = tf.train.Saver()
-        init = tf.initialize_all_variables()
+        tf.initialize_all_variables()
         sess = tf.Session()
-        old_model_file = None
         if len(os.listdir(param['model_path'])) > 0:
             old_model_file = None
             try:
@@ -206,17 +198,40 @@ def run_test(param):
             saver.restore(sess, old_model_file)
         else:
             raise Exception('there is no model.. exiting')
-        print 'Evaluating on test data'
-        perform_test(sess, model, param, logits, losses, vocab)
-    f_out.close()
+        print 'Start predicting the next sentence...'
+        sentences = perform_test(sess, model, param, logits, losses, vocab)
+        print 'The sentence is ', sentences
+        return sentences
+
+def prepare_data(root_path):
+    param = get_params(root_path, os.path.join(root_path, 'text_task_resnet'), test_state=None)
+
+    test_dir_loc = os.path.join(root_path, "history")
+    dump_dir_loc = param['dump_dir_loc']
+    vocab_file = param['vocab_file']
+    vocab_stats_file = param['vocab_stats_file']
+    vocab_freq_cutoff = param['vocab_freq_cutoff']
+    test_data_file = param['test_data_file']
+
+    max_utter = param['max_utter']
+    max_len = param['max_len']
+    max_images = param['max_images']
+    preparedata = PrepareData(max_utter, max_len, max_images, start_symbol_index, end_symbol_index, unk_symbol_index,
+                              pad_symbol_index, "text", cutoff=vocab_freq_cutoff)
+    if os.path.isfile(vocab_file):
+        print 'found existing vocab file in ' + str(vocab_file) + ', ... reading from there'
+    preparedata.prepare_data(test_dir_loc, vocab_file, vocab_stats_file, os.path.join(dump_dir_loc, "test_smallest"),
+                             test_data_file, isTrain=False, isTest=True)
 
 
 
-
-def run_text_prediction():
-    data_dir = './data/v2'
-    param = get_params(data_dir, '.', None)
-    run_test(param)
+def run_text_prediction(root_path):
+    prepare_data(root_path)
+    data_dir = os.path.join(root_path, 'data', 'v2')
+    param = get_params(data_dir,  os.path.join(root_path, 'text_task_resnet'), None)
+    pred_sent = run_test(param)
+    return pred_sent
 
 if __name__ == "__main__":
-    run_text_prediction()
+    pred_sent = run_text_prediction("/Users/zhouyou/Workspace/cs4242/flask-chatterbot/")
+    print(pred_sent)

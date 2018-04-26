@@ -53,7 +53,7 @@ class PrepareData():
     def prepare_data(self, input, vocab_file, vocab_stats_file, output, dialogue_pkl_file, isTrain, isTest=False,
                      test_state=None):
         if not os.path.isdir(input) or len(os.listdir(input)) == 0:
-            raise Exception("Input file not found")
+            raise Exception(input, "Input file not found")
         if not self.task_type == "text" and not self.task_type == "image":
             raise Exception("task_type has to be either text or image, found " + self.task_type)
         self.vocab_file = vocab_file
@@ -77,8 +77,8 @@ class PrepareData():
             self.build_vocab()
         else:
             self.read_vocab()
-        if create_vocab or not os.path.exists(dialogue_pkl_file):
-            self.binarize_corpus(dialogue_pkl_file)
+        # if create_vocab or not os.path.exists(dialogue_pkl_file):
+        self.binarize_corpus(dialogue_pkl_file)
 
     def read_jsondir(self, json_dir, is_test, test_state, create_vocab=False):
         '''
@@ -444,7 +444,6 @@ class PrepareData():
             print 'dumped vocab in ', self.vocab_file
         self.logger.info("Number of unknowns %d" % unknowns)
         self.logger.info("Number of terms %d" % num_terms)
-        self.logger.info("Mean document length %f" % float(sum(map(len, binarized_corpus)) / len(binarized_corpus)))
         self.logger.info("Writing training %d dialogues (%d left out)" % (
         len(binarized_corpus), num_instances + 1 - len(binarized_corpus)))
 

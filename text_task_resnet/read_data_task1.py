@@ -1,7 +1,7 @@
 import sys
 import numpy as np
 import cPickle as pkl
-import os
+from os import path
 # from params import *
 from prepare_data_for_hred import PrepareData
 from params_test_v2 import get_params
@@ -20,8 +20,7 @@ import os
 from annoy import AnnoyIndex
 import cPickle as pkl
 
-ImageUrlToIndex = pkl.load(open('../data/Img_Fea_Dic.pkl'))
-ImageFea = np.load(open('../data/Img_Fea.npy'))
+
 
 # annoyIndex.load('../multimodal_dialogue/image_annoy_index/annoy.ann')
 # annoyPkl = pkl.load(open('../multimodal_dialogue/image_annoy_index/FileNameMapToIndex.pkl'))
@@ -228,8 +227,9 @@ def check_padding(batch_text_dict, batch_image_dict, batch_target, max_len, max_
 def load_valid_test_target(data_dict):
     return np.asarray(data_dict)[:, 2]
 
-
-if __name__ == "__main__":
+def read_data(root_path):
+    ImageUrlToIndex = pkl.load(open(path.join(root_path, 'data', 'Img_Fea_Dic.pkl')))
+    ImageFea = np.load(open(path.join(root_path, 'data', 'Img_Fea.npy')))
     param = get_params(sys.argv[1])
     train_dir_loc = param['train_dir_loc']
     valid_dir_loc = param['valid_dir_loc']
@@ -252,3 +252,7 @@ if __name__ == "__main__":
         print 'found existing vocab file in ' + str(vocab_file) + ', ... reading from there'
     preparedata.prepare_data(test_dir_loc, vocab_file, vocab_stats_file, os.path.join(dump_dir_loc, "test_smallest"),
                              test_data_file)
+
+
+if __name__ == "__main__":
+    read_data(".")

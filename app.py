@@ -1,9 +1,7 @@
 from flask import Flask, render_template, request
 # from flask_uploads import UploadSet, configure_uploads, IMAGES
-from chatterbot import ChatBot
 from predict import svm_intent, svm_response
-
-from chatterbot.trainers import ChatterBotCorpusTrainer
+from text_task_resnet.run_prediction import run_text_prediction
 import json
 from os import path
 
@@ -12,65 +10,22 @@ app = Flask(__name__)
 # app.config['UPLOADED_PHOTOS_DEST'] = 'static/img'
 # configure_uploads(app, photos)
 
-# english_bot = ChatBot("Chatterbot", storage_adapter="chatterbot.storage.SQLStorageAdapter")
 
-# english_bot.set_trainer(ChatterBotCorpusTrainer)
-# english_bot.train("chatterbot.corpus.english")
+end_response = {
+    "intent_type": "exit message",
+    "response_type": "ending nlg",
+    "type": "exit message",
+    "speaker": "system",
+    "utterance": {
+        "images": None,
+        "false nlg": None,
+        "nlg": "This conversation is over  :)"
+    },
+    "inference": "exit message"
+}
 
-@app.route("/")
-def home():
-    global index
-    index = 0
-    return render_template("chat.html")
-
-@app.route("/get")
-def get_bot_response():
-    msg = request.args.get('messageText')
-    intent_type = svm_intent(msg, app.root_path)
-    response_type = svm_response(msg, app.root_path)
-    with open(path.join(app.root_path,'intention_model', "mapping.json")) as mapping_f:
-        infer_map = json.load(mapping_f)
-
-    if "hi" == msg or "hello" == msg:
-        print(msg)
-        clear_history()
-
-
-    curr_turn = {
-        "type": "greeting",
-        "speaker": "user",
-        "utterence": {
-            "images": None,
-            "false nlg": None,
-            "nlg": msg
-        }
-    }
-
-    end_response =  {
-        "intent_type": "exit message",
-        "response_type": "ending nlg",
-        "type": "exit message",
-        "speaker": "system",
-        "utterance": {
-            "images": None,
-            "false nlg": None,
-            "nlg": "This conversation is over  :)"
-        }
-    }
-    end_response["inference"] = infer_map["exit message"]
-
-
-    with open(path.join(app.root_path, './history/curr_history.txt')) as data_file:
-        old_data = json.load(data_file)
-        if old_data is None:
-            data = [curr_turn]
-            index = 1
-        else:
-            data = old_data
-            data.append(curr_turn)
-            index = len(data)
-
-    with open(path.join(app.root_path, './history/1.json')) as answer:
+def get_fake_response(index, intent_type, response_type):
+    with open(path.join(app.root_path, '1.json')) as answer:
         history = json.load(answer)
         if index > len(history):
             return json.dumps([end_response])
@@ -80,7 +35,7 @@ def get_bot_response():
         response = history[index]
         response["intent_type"] = intent_type
         response["response_type"] = response_type
-        response["inference"] = infer_map[intent_type]
+        response["inference"] = intent_type
         response = [response]
 
         prev_is_system = False
@@ -96,16 +51,72 @@ def get_bot_response():
             if "system" in history[index + 2]["speaker"]:
                 response.append(history[index + 2])
                 print("here", index+2)
+        return response
 
+
+@app.route("/")
+def home():
+    global index
+    index = 0
+    return render_template("chat.html")
+
+@app.route("/get")
+def get_bot_response():
+    msg = request.args.get('messageText')
+    intent_type = svm_intent(msg, app.root_path)
+    response_type = svm_response(msg, app.root_path)
+
+    if "hi" == msg or "hello" == msg:
+        clear_history()
+
+    curr_turn = {
+        "type": intent_type,
+        "speaker": "user",
+        "utterance": {
+            "images": None,
+            "false nlg": None,
+            "nlg": msg
+        }
+    }
+
+
+    with open(path.join(app.root_path, './history/curr_history.json')) as data_file:
+        old_data = json.load(data_file)
+        if old_data is None:
+            data = [curr_turn]
+            index = 1
+        else:
+            data = old_data
+            data.append(curr_turn)
+            index = len(data)
+        with open(path.join(app.root_path, './history/curr_history.json'), 'w') as output:
+            output.write(json.dumps(data))
+
+    response = get_fake_response(index, intent_type, response_type)
+
+
+    if len(data) < 2:
         data = data + response
-
-        with open(path.join(app.root_path, './history/curr_history.txt'), 'w') as outfile:
+        with open(path.join(app.root_path, './history/curr_history.json'), 'w') as outfile:
             outfile.write(json.dumps(data))
 
-        # print(response)
-        # if len(response) > 1 :
-        #     response = merge_response(response)
-        return json.dumps(response)
+
+    pred_sent = run_text_prediction(app.root_path)[-1]
+    response = [{
+        "type": response_type,
+        "speaker": "system",
+        "utterance": {
+            "images": None,
+            "false nlg": None,
+            "nlg": pred_sent
+        }
+    }]
+
+    if len(data) >= 2:
+        data = data + response
+        with open(path.join(app.root_path, './history/curr_history.json'), 'w') as outfile:
+            outfile.write(json.dumps(data))
+    return json.dumps(response)
 
 
 
@@ -118,7 +129,7 @@ def upload():
 
 
 def clear_history():
-    with open(path.join(app.root_path, './history/curr_history.txt'), 'w') as output:
+    with open(path.join(app.root_path, './history/curr_history.json'), 'w') as output:
         output.write("null")
 
 def merge_response(response):
