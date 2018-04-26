@@ -14,9 +14,9 @@ from nltk.util import ngrams
 from os import path
 
 def svm_intent(input_text, curr_path):
-    model = joblib.load(path.join(curr_path, 'intent_svm.pkl'))
-    voc = joblib.load(path.join(curr_path, 'intent_vocabulary.pkl'))
-    idf = joblib.load(path.join(curr_path, 'intent_idf.pkl'))
+    model = joblib.load(path.join(curr_path, 'intention_model', 'intent_svm.pkl'))
+    voc = joblib.load(path.join(curr_path, 'intention_model', 'intent_vocabulary.pkl'))
+    idf = joblib.load(path.join(curr_path, 'intention_model', 'intent_idf.pkl'))
     unigram = input_text.strip().split(' ')
     bigram = [i + ' ' + j for (i,j) in ngrams(input_text.strip().split(' '),2)]
     x = unigram + bigram
@@ -26,9 +26,9 @@ def svm_intent(input_text, curr_path):
     return result[0]
 
 def svm_response(input_text, curr_path):
-    model = joblib.load(path.join(curr_path,'response_svm.pkl'))
-    voc = joblib.load(path.join(curr_path, 'response_vocabulary.pkl'))
-    idf = joblib.load(path.join(curr_path, 'response_idf.pkl'))
+    model = joblib.load(path.join(curr_path,'intention_model','response_svm.pkl'))
+    voc = joblib.load(path.join(curr_path,'intention_model', 'response_vocabulary.pkl'))
+    idf = joblib.load(path.join(curr_path, 'intention_model','response_idf.pkl'))
     unigram = input_text.strip().split(' ')
     bigram = [i + ' ' + j for (i,j) in ngrams(input_text.strip().split(' '),2)]
     x = unigram + bigram

@@ -12,3 +12,4 @@ text_task_resnet/model/
 text_task_resnet/test_output/
 text_task_resnet/*.txt
 history/curr_history.txt
+image_task_resnet/

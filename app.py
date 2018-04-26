@@ -28,7 +28,7 @@ def get_bot_response():
     msg = request.args.get('messageText')
     intent_type = svm_intent(msg, app.root_path)
     response_type = svm_response(msg, app.root_path)
-    with open(path.join(app.root_path, "mapping.json")) as mapping_f:
+    with open(path.join(app.root_path,'intention_model', "mapping.json")) as mapping_f:
         infer_map = json.load(mapping_f)
 
     if "hi" == msg or "hello" == msg:
