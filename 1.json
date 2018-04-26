@@ -1,0 +1,330 @@
+[
+ {
+  "type": "greeting", 
+  "speaker": "user", 
+  "utterance": {
+   "images": null, 
+   "false nlg": null, 
+   "nlg": "Hello"
+  }
+ }, 
+ {
+  "type": "greeting", 
+  "speaker": "system", 
+  "utterance": {
+   "images": null, 
+   "false nlg": null, 
+   "nlg": "Hi, can i help you with something today?"
+  }
+ }, 
+ {
+  "type": "question", 
+  "speaker": "user", 
+  "utterance": {
+   "images": null, 
+   "false nlg": null, 
+   "nlg": "Could you show me some blouse for causual school outfit?"
+  }
+ }, 
+ {
+  "type": "answer", 
+  "speaker": "system", 
+  "utterance": {
+   "images": null, 
+   "false nlg": null, 
+   "nlg": "Good! I'll just make a quick search through my catalog"
+  }
+ }, 
+ {
+  "speaker": "system", 
+  "type": "answer", 
+  "utterance": {
+   "false nlg": "", 
+   "false images": [], 
+   "nlg": null, 
+   "images": [
+    "https://cdn-images.farfetch-contents.com/12/70/45/79/12704579_12465215_480.jpg", 
+    "https://cdn-images.farfetch-contents.com/12/62/80/64/12628064_12189592_480.jpg", 
+    "https://cdn-images.farfetch-contents.com/12/85/54/23/12855423_13146090_480.jpg", 
+    "https://cdn-images.farfetch-contents.com/12/66/53/26/12665326_12346915_480.jpg"
+   ]
+  }
+ }, 
+  {
+  "question-type": "like_n_show_result", 
+  "speaker": "user", 
+  "utterance": {
+   "images": null, 
+   "false nlg": null, 
+   "nlg": "Could you show similar items as in the 3rd picture?"
+  }, 
+  "question-subtype": "show_in_attribute_as_in_n", 
+  "type": "question"
+ }, 
+ {
+  "speaker": "system", 
+  "type": "answer", 
+  "utterance": {
+   "false nlg": "", 
+   "false images": [], 
+   "nlg": null, 
+   "images": [
+    "https://cdn-images.farfetch-contents.com/11/49/38/65/11493865_7080796_480.jpg", 
+    "https://cdn-images.farfetch-contents.com/11/59/94/42/11599442_8185037_480.jpg", 
+    "https://cdn-images.farfetch-contents.com/12/51/60/28/12516028_11821190_480.jpg",
+    "https://cdn-images.farfetch-contents.com/12/24/95/50/12249550_10611786_480.jpg"]
+  }
+ }, 
+ {
+  "speaker": "system", 
+  "type": "answer", 
+  "utterance": {
+   "false nlg": "", 
+   "false images": [], 
+   "nlg": "These are the most fashionable similar items. The item in the second image is from 18AW of Alexanda McQueen", 
+   "images": []
+  }
+ },
+ {
+  "question-type": "ask_attribute", 
+  "speaker": "user", 
+  "utterance": {
+   "images": null, 
+   "false nlg": null, 
+   "nlg": "Is the material silk in the 2rd image?"
+  }, 
+  "question-subtype": "is_attribute_in_synset_n", 
+  "type": "question"
+ }, 
+ {
+  "speaker": "system", 
+  "type": "answer", 
+  "utterance": {
+   "images": null, 
+   "false images": null, 
+   "false nlg": "Yes.", 
+   "nlg": "Yes."
+  }
+ },
+ {
+  "question-type": "like_n_show_result", 
+  "speaker": "user", 
+  "utterance": {
+   "images": null, 
+   "false nlg": null, 
+   "nlg": "then could you show some other blouse in the same material?"
+  }, 
+  "question-subtype": "show_in_attribute_as_in_n", 
+  "type": "question"
+ }, 
+ {
+  "speaker": "system", 
+  "type": "answer", 
+  "utterance": {
+   "false nlg": "", 
+   "false images": [
+    "https://images-na.ssl-images-amazon.com/images/I/51A5MYRE3zL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41P1l3mqv5L.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41%2BkV1z4XdL.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/41-08S-gT8L.jpg", 
+    "https://images-na.ssl-images-amazon.com/images/I/418PN79wn1L.jpg"
+   ], 
+   "nlg": null, 
+   "images": [
+    "https://cdn-images.farfetch-contents.com/12/14/43/57/12144357_10190232_480.jpg",
+    "https://cdn-images.farfetch-contents.com/12/36/39/35/12363935_11367254_480.jpg",
+    "https://cdn-images.farfetch-contents.com/12/16/68/63/12166863_10442526_480.jpg"]
+  }
+ }, 
+ {
+  "speaker": "system", 
+  "type": "answer", 
+  "utterance": {
+   "false nlg": "", 
+   "false images": [], 
+   "nlg": "For the blouse in the second image, it may goes well with black pants or white dress. It was sold out before and has just been back to shelf recently. ", 
+   "images": []
+  }
+ }, 
+ {
+  "question-type": "do_not_like_show_result", 
+  "speaker": "user", 
+  "utterance": {
+   "images": null, 
+   "false nlg": null, 
+   "nlg": "Okayyy I don't really like these color, could you recommend some white or light blue items?"
+  }, 
+  "question-subtype": "do_not_like_show_in_attribute_as_in_ns", 
+  "type": "question"
+ }, 
+ {
+  "speaker": "system", 
+  "type": "answer", 
+  "utterance": {
+   "false nlg": "", 
+   "false images": [], 
+   "nlg": null, 
+   "images": [
+    "https://cdn-images.farfetch-contents.com/12/77/66/35/12776635_12759289_480.jpg",
+    "https://cdn-images.farfetch-contents.com/12/57/45/33/12574533_11986824_480.jpg",
+    "https://cdn-images.farfetch-contents.com/12/54/85/49/12548549_11955615_480.jpg",
+    "https://cdn-images.farfetch-contents.com/12/59/27/32/12592732_12235019_480.jpg"
+   ]
+  }
+ }, 
+  {
+  "speaker": "system", 
+  "type": "answer", 
+  "utterance": {
+   "images": null, 
+   "false images": null, 
+   "false nlg": "The color is two tone in the 3rd image; three in the 2nd image", 
+   "nlg": "These blouse will look smart for business casual ocassions, all of them goes well with comfortable loafers."
+  }
+ },
+  {
+  "question-type": "do_not_like_show_result", 
+  "speaker": "user", 
+  "utterance": {
+   "images": null, 
+   "false nlg": null, 
+   "nlg": "Can you show some other orientations for the third item?"
+  }, 
+  "question-subtype": "do_not_like_show_in_attribute_as_in_ns", 
+  "type": "question"
+ }, 
+ {
+  "speaker": "system", 
+  "type": "answer", 
+  "utterance": {
+   "false nlg": "", 
+   "false images": [], 
+   "nlg": null, 
+   "images": [
+    "https://cdn-images.farfetch-contents.com/12/54/85/49/12548549_11955618_480.jpg", 
+    "https://cdn-images.farfetch-contents.com/12/54/85/49/12548549_11955621_480.jpg", 
+    "https://cdn-images.farfetch-contents.com/12/54/85/49/12548549_11955617_480.jpg"
+   ]
+  }
+ },  
+ {
+  "speaker": "system", 
+  "type": "answer", 
+  "utterance": {
+   "images": [], 
+   "false images": [], 
+   "false nlg": "Image from the front,right,back and left orientations respectively", 
+   "nlg": "Image from the front and back orientations respectively"
+  }
+ }, 
+ {
+  "question-type": "suited_for", 
+  "speaker": "user", 
+  "utterance": {
+   "images": null, 
+   "false nlg": null, 
+   "nlg": "Is this one suited for machine wash?"
+  }, 
+  "question-subtype": "ask_if_ns_suited_for", 
+  "type": "question"
+ }, 
+ {
+  "speaker": "system", 
+  "type": "answer", 
+  "utterance": {
+   "images": null, 
+   "false images": null, 
+   "false nlg": "Yes", 
+   "nlg": "Yes"
+  }
+ }, 
+ {
+  "question-type": "go_with", 
+  "speaker": "user", 
+  "utterance": {
+   "images": null, 
+   "false nlg": null, 
+   "nlg": "\u2018Show me denim coat that will pair well it?\u2019"
+  }, 
+  "question-subtype": "ask_what_will_go_with_n", 
+  "type": "question"
+ }, 
+ {
+  "speaker": "system", 
+  "type": "answer", 
+  "utterance": {
+   "images": [
+    "https://cdn-images.farfetch-contents.com/12/88/84/12/12888412_13111007_480.jpg",
+    "https://cdn-images.farfetch-contents.com/12/83/78/05/12837805_13048146_480.jpg",
+    "https://cdn-images.farfetch-contents.com/12/83/05/41/12830541_12951859_480.jpg",
+    "https://cdn-images.farfetch-contents.com/12/62/94/78/12629478_12167579_480.jpg"
+   ], 
+   "false images": null, 
+   "false nlg": "It can go well with moc style, natural-round type footwear and with classy or refined style, striped,stripe printed, slim closing trousers", 
+   "nlg": "These are all trendy matches for you.  They can go well with Derby shoes, preppy style sunglasses and with trousers or skirts in solid color"
+  }
+ },  
+ {
+  "question-type": "celebrity", 
+  "speaker": "user", 
+  "utterance": {
+   "images": null, 
+   "false nlg": null, 
+   "nlg": "Does celebrities usually wear the kind of jacket in the 3rd image?"
+  }, 
+  "question-subtype": "does_celebrity_endorse_n", 
+  "type": "question"
+ }, 
+ {
+  "speaker": "system", 
+  "type": "answer", 
+  "utterance": {
+   "images": null, 
+   "false images": null, 
+   "false nlg": null,
+   "nlg": "the kind of casual blouse usually worn by celebrity cel_821."
+  }
+ }, 
+ {
+  "question-type": "ask_attribute", 
+  "speaker": "user", 
+  "utterance": {
+   "images": null, 
+   "false nlg": null, 
+   "nlg": "\u2018what brand is it?\u2019"
+  }, 
+  "question-subtype": "ask_attribute_in_synset_n", 
+  "type": "question"
+ }, 
+ {
+  "speaker": "system", 
+  "type": "answer", 
+  "utterance": {
+   "images": null, 
+   "false images": null, 
+   "false nlg": "The brand in 3rd image is STELLA MCCARTNEY", 
+   "nlg": "The brand in 3rd image is Tommy Hilfiger"
+  }
+ }, 
+ {
+  "question-type": "buy", 
+  "speaker": "user", 
+  "utterance": {
+   "images": null, 
+   "false nlg": null, 
+   "nlg": "I want to buy it"
+  }, 
+  "question-subtype": "buy_n", 
+  "type": "question"
+ }, 
+ {
+  "speaker": "system", 
+  "type": "answer", 
+  "utterance": {
+   "images": null, 
+   "false images": null, 
+   "false nlg": "Great choice", 
+   "nlg": "Great choice"
+  }
+ }
+]
