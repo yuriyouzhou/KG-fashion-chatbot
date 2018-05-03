@@ -14,7 +14,10 @@ An multi-modal Chatbot for online shopping assistent.
 ## TODO LIST
 
 * reduce model loading time
-* integrate image recommendation
+* image upload in py2
+* user's uploaded image feature extratcion
+* model integration
+* maintain session during conversation
 
 
 
