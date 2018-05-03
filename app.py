@@ -24,34 +24,7 @@ end_response = {
     "inference": "exit message"
 }
 
-def get_fake_response(index, intent_type, response_type):
-    with open(path.join(app.root_path, '1.json')) as answer:
-        history = json.load(answer)
-        if index > len(history):
-            return json.dumps([end_response])
-        if "user" in history[index]["speaker"]:
-            index = index + 1
 
-        response = history[index]
-        response["intent_type"] = intent_type
-        response["response_type"] = response_type
-        response["inference"] = intent_type
-        response = [response]
-
-        prev_is_system = False
-
-        if index+1 < len(history):
-            if "system" in history[index + 1]["speaker"]:
-                response.append(history[index + 1])
-                print(index+1)
-                prev_is_system = True
-
-
-        if prev_is_system and index+2 < len(history):
-            if "system" in history[index + 2]["speaker"]:
-                response.append(history[index + 2])
-                print("here", index+2)
-        return response
 
 
 @app.route("/")
@@ -70,7 +43,8 @@ def get_bot_response():
         response = clear_history()
         pred_sent = run_text_prediction(app.root_path)[-1]
         response = [{
-            "type": response_type,
+            "response_type": response_type,
+            "intent_type":intent_type,
             "speaker": "system",
             "utterance": {
                 "images": None,
@@ -82,7 +56,8 @@ def get_bot_response():
 
 
     curr_turn = {
-        "type": intent_type,
+        "intent_type": intent_type,
+        "response_type": response_type,
         "speaker": "user",
         "utterance": {
             "images": None,
@@ -107,7 +82,8 @@ def get_bot_response():
 
     pred_sent = run_text_prediction(app.root_path)[-1]
     response = [{
-        "type": response_type,
+        "response_type": response_type,
+        "intent_type": intent_type,
         "speaker": "system",
         "utterance": {
             "images": None,
@@ -119,6 +95,7 @@ def get_bot_response():
     data = data + response
     with open(path.join(app.root_path, './history/curr_history.json'), 'w') as outfile:
         outfile.write(json.dumps(data))
+    print response
     return json.dumps(response)
 
 
@@ -175,27 +152,6 @@ def clear_history():
         output.write(history)
         return response
 
-def merge_response(response):
-    final_response =  {
-        "type": "greeting",
-        "speaker": "system",
-        "utterance": {
-            "images": None,
-            "false nlg": None,
-            "nlg": None
-        }
-    }
-    for r in response:
-        if final_response["utterance"]["images"] is None:
-            final_response["utterance"]["images"] = r["utterance"]["images"]
-        elif r["utterance"]["images"] is not None:
-            final_response["utterance"]["images"] += r["utterance"]["images"]
-
-        if final_response["utterance"]["nlg"] is None:
-            final_response["utterance"]["nlg"] = r["utterance"]["nlg"]
-        elif r["utterance"]["nlg"] is not None:
-            final_response["utterance"]["nlg"] += r["utterance"]["nlg"]
-    return [final_response]
 
 
 if __name__ == "__main__":

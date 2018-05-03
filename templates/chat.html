@@ -57,7 +57,6 @@
 			border-bottom-left-radius: 3px;
 			}
             #id1 {
-                position: fixed;
                 bottom: 60px;
                 margin: 0 auto;
                 width: 50%;
@@ -192,7 +191,7 @@ div.desc {
                 if (response === "both") {
                     response = "Text and Images";
                 }
-                var para = intent +
+                var para = "I gues your intention is " + intent + " " +
                         ".\n My response type is " + "<strong>"+response+"</strong>";
                 return para;
             };
@@ -281,10 +280,9 @@ div.desc {
                         $('#messageText').val('');
                         var intent_type = response[0]["intent_type"];
                         var response_type = response[0]["response_type"];
-                        var inference_msg = response[0]["inference"];
                         console.log(intent_type);
                         console.log(response_type);
-                        var inferred_text  = get_inffered_sentence(inference_msg, response_type);
+                        var inferred_text  = get_inffered_sentence(intent_type, response_type);
                         $('#id-text').html(inferred_text);
                         for (var j=0; j<response.length; j++) {
                                                     var text_response = response[j]["utterance"]["nlg"];
