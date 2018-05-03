@@ -29,18 +29,18 @@ end_response = {
 
 @app.route("/")
 def home():
-    global index
-    index = 0
     return render_template("chat.html")
 
 @app.route("/get")
 def get_bot_response():
+    #step 1: infer intention of the model
     msg = request.args.get('messageText')
     intent_type = svm_intent(msg, app.root_path)
     response_type = svm_response(msg, app.root_path)
 
     if "hi" == msg or "hello" == msg:
-        response = clear_history()
+        # if this is the start of the conversation, return predifned response
+        clear_history()
         pred_sent = run_text_prediction(app.root_path)[-1]
         response = [{
             "response_type": response_type,
@@ -54,7 +54,7 @@ def get_bot_response():
         }]
         return json.dumps(response)
 
-
+    # step 2: read current msg from user and save history
     curr_turn = {
         "intent_type": intent_type,
         "response_type": response_type,
@@ -65,33 +65,41 @@ def get_bot_response():
             "nlg": msg
         }
     }
-
-
     with open(path.join(app.root_path, './history/curr_history.json')) as data_file:
         old_data = json.load(data_file)
         if old_data is None:
             data = [curr_turn]
-            index = 1
         else:
             data = old_data
             data.append(curr_turn)
-            index = len(data)
         with open(path.join(app.root_path, './history/curr_history.json'), 'w') as output:
             output.write(json.dumps(data))
 
 
-    pred_sent = run_text_prediction(app.root_path)[-1]
-    response = [{
-        "response_type": response_type,
-        "intent_type": intent_type,
-        "speaker": "system",
-        "utterance": {
-            "images": None,
-            "false nlg": None,
-            "nlg": pred_sent
-        }
-    }]
-
+    # step 3: run model prediction
+    if "text" in response_type or "both" in response_type:
+        pred_sent = run_text_prediction(app.root_path)[-1]
+        response = [{
+            "response_type": response_type,
+            "intent_type": intent_type,
+            "speaker": "system",
+            "utterance": {
+                "images": None,
+                "false nlg": None,
+                "nlg": pred_sent
+            }
+        }]
+    else:
+        response = [{
+            "response_type": response_type,
+            "intent_type": intent_type,
+            "speaker": "system",
+            "utterance": {
+                "images": None,
+                "false nlg": None,
+                "nlg": "Image response is not ready yet"
+            }
+        }]
     data = data + response
     with open(path.join(app.root_path, './history/curr_history.json'), 'w') as outfile:
         outfile.write(json.dumps(data))
@@ -140,17 +148,7 @@ def clear_history():
   }
  }]
         """
-        response = [{
-            "type": "greeting",
-            "speaker": "system",
-            "utterance": {
-                "images": None,
-                "false nlg": None,
-                "nlg": "Hi, how can i help you with something today?"
-            }
-        }]
         output.write(history)
-        return response
 
 
 
