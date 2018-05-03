@@ -128,7 +128,16 @@ def get_bot_response():
 def upload():
     if request.method == 'POST':
         file = request.files['photo']
-        return json.dumps({'answer': "%s has received!"%file.name})
+        response = {
+            "type": "greeting",
+            "speaker": "system",
+            "utterance": {
+                "images": None,
+                "false nlg": None,
+                "nlg": "%s has received!"%file.name
+            }
+        }
+        return json.dumps(response)
 
 
 def clear_history():
