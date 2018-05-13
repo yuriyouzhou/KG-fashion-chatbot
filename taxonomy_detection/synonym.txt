@@ -1,0 +1,104 @@
+fashion||||fad,form,look,mode,model,pattern,shape,thing,tone,trend,appearance,bandwagon,chic,configuration,convention,craze,cry,cultism,cultus,custom,cut,figure,furor,latest,line,make,mold,rage,usage,vogue,dernier cri,faddism,in thing,last word,latest thing,newest wrinkle,fashion
+up||||at the apex of,at the summit,at the top,up
+tanks||||container,vessel,basin,cask,cauldron,cistern,keg,receptacle,tub,vat,tanks
+camisole tank||||completing,consultant,mustang,misleading,mis leading,came stage,came along,cumulating,camisole tank
+halter top||||halter,halted,hilltop,heliotrope,hauled up,heated up,holed up,hot it up,halter top
+tube top||||tip top,beatup,tubbed,tube,debtor,tuned up,subtopia,dubiety,tube top
+blazer||||coat,jacket,blazer
+one button blazer||||un buttons,unobtainable,obtainable,un obtainable,unbeatable,untroubles,internalize,un troubles,one button blazer
+lapel blazer||||trailblaze,lapels,pallbearers,trail blaze,pebbles,laypeoples,pale blue,plebes,lapel blazer
+zipper blazer||||superbly,pebbles,hyperbolas,hyperboles,spielers,set ablaze,zipper,superbities,zipper blazer
+vest||||bestow,confer,empower,endow,belong,consign,furnish,invest,lodge,pertain,place,settle,put in the hands of,vest
+waistcoat||||balmoral,clothes,female,feminine,kilt,slip,undercoat,underskirt,waistcoat,waistcoat
+sweater vest||||sweetest,swartest,swiftest,sweater,sweater vest
+outdoor vest||||at outset,at first,activist,additives,art forced,art first,undevised,stood fast,outdoor vest
+coat||||fur,leather,skin,wool,crust,ectoderm,epidermis,felt,fleece,hide,husk,integument,membrane,pelage,pellicle,pelt,rind,scale,shell,peltry,protective covering,scarfskin,coat
+jacket||||coat,fur,parka,sheath,tunic,case,casing,envelope,folder,hide,pelt,skin,threads,wrapper,wrapping,jacket
+wrap coat||||raincoat,topcoat,rapport,rapist,top coat,raptor,wrapped,racket,wrap coat
+cape coat||||scapegoat,copy cat,carped at,gape at,topcoat,carp at,carport,capeador,cape coat
+parka||||coat,fur,parka,sheath,tunic,case,casing,envelope,folder,hide,pelt,skin,threads,wrapper,wrapping,parka
+peacoat||||peck at,packet,peacock,percolate,coat,pagoda,peacocky,peat,peacoat
+sweaters/knitwear||||outwear,footwear,knitted,nightwears,noter,nower,nuter,knits,sweaters/knitwear
+pullover sweater||||oversweet,loveseat,love seat,over sweet,plovers,pullover,pulse rate,seltzer water,pullover sweater
+cardigan||||carding,guardian,gordian,carking,carting,carton,cording,cordon,cardigan
+shirts||||blouse,jersey,pullover,tunic,turtleneck,chemise,polo,sark,shirts
+polo shirt||||golf shirt,knit pullover,polo shirt
+henley shirt||||heelest,unleashed,hair shirt,fell short,sell short,under shirt,sells short,penalty shot,henley shirt
+t-shirt||||bodice,pullover,turtleneck,T-shirt,middy,shell,slipover,V-neck,bodysuit,t-shirt
+camp shirt||||came short,came up short,campiest,camp chair,comport,come short,camp chairs,come up short,camp shirt
+tunic||||blouse,coat,jacket,robe,chiton,kirtle,surcoat,toga,tunic
+nightshirt||||lingerie,pajamas,negligee,nightdress,nightie,nightshirt,sleeper,PJs,bedgown,nightrobe,nightshirt
+dress||||apparel,attire,costume,ensemble,frock,garb,gown,robe,skirt,smock,suit,uniform,wardrobe,accouterment,civvies,covering,drape,duds,gear,guise,habiliment,habit,muumuu,outfit,pinafore,raiment,shift,things,threads,tog,toga,trappings,vestment,Sunday best,attirement,dry goods,evening clothes,toggery,dress
+a line||||adulation,baloney,blandishment,cajolery,coaxing,compliments,exaggeration,eyewash,fawning,honey,incense,ingratiation,oil,overpraise,wheedling,a line,inveiglement,soft soap,soft words,sweet talk,a line
+apron||||smock,cover,pinafore,shield,apron
+ball gown||||balcony,blown,all gone,bullhorn,bludgeon,ballock,billion,bullion,ball gown
+bodycon||||body count,bodying,bacon,bedgown,body scan,beacon,body,border on,bodycon
+caftan||||bathrobe,caftan,housecoat,lounging robe,morning dress,robe de chambre,yukata,caftan
+empire||||authority,command,commonwealth,control,domain,dominion,federation,government,people,power,realm,sovereignty,supremacy,sway,union,empire
+flapper||||branch,rod,wing,bender,biceps,bough,bow,fin,flapper,flipper,handle,hook,member,offshoot,projection,prong,stump,triceps,upper arm,flapper
+halter dress||||alterers,halters,halberds,elatedness,harlotries,alterities,halted,headdress,halter dress
+maxi dress||||mixtures,magisters,mis tress,masteries,megastores,make redress,mixture,maestros,maxi dress
+peplum dress||||plummets,sepultures,plunderous,plummetless,peltries,populates,pie plates,people movers,peplum dress
+sheath dress||||share address,chatterers,withdraws,sheath,with draws,sheath dress
+shift dress||||shiftiness,shifties,shifts's,shift,shift dress
+slip dress||||slip roads,slanderers,sceptres,solitaires,solitaries,slanderous,slapdashes,slip,slip dress
+smock dress||||seamstress,smatterers,sectaries,skid rows,smock,cinctures,smock dress
+sweetheart dress||||sweethearts,softheartedness,stoutheartedness,sweetheart,soft heartedness,sweetheart dress
+wrap dress||||rapidness,topdress,redress,repress,re dress,raptness,padres,re press,wrap dress
+jumpsuit||||jumpsuit,maillot,maillot de bain,swimsuit,tank suit,jumpsuit
+romper||||knickers,slacks,bloomers,breeches,britches,chaps,chinos,cords,corduroys,denims,dungarees,jeans,overalls,pantaloons,rompers,blue jeans,romper
+lingerie||||underwear,nightclothes,nightwear,underclothes,underclothing,undies,unmentionables,underthings,lingerie
+bottom||||base,basement,basic,ground,last,primary,radical,underlying,basal,foundational,lowermost,lowest,meat-and-potatoes,nethermost,rock-bottom,undermost,bottom
+trousers||||knickers,slacks,bloomers,breeches,britches,chaps,chinos,cords,corduroys,denims,dungarees,jeans,overalls,pantaloons,rompers,blue jeans,trousers
+pants||||knickers,shorts,slacks,trousers,underpants,Bermudas,bloomers,breeches,briefs,britches,chaps,chinos,cords,corduroys,denims,drawers,dungarees,jeans,jodhpurs,overalls,pantaloons,panties,blue jeans,boxer shorts,clam diggers,pedal pushers,pants
+workout pant||||worked upon,worked into,worked up on,worked in to,good point,weak point,got point,got to point,workout pant
+flat front pant||||flat pant,front pant
+lounge pant||||longhand,longest,pungent,lunged at,lunges at,lounged,lounging,long wait,lounge pant
+sweatpant||||smarty pant,sweating it,sweetened,sweat,sweeten pot,step on it,sweatpant
+joggers||||contestant,entrant,hurdler,marathoner,racer,sprinter,carrier,courier,jogger,messenger,cross-country runner,distance runner,long distance runner,middle distance runner,trackman,joggers
+cargo pant||||came point,case point,cogent,cap nut,carpenter,gargantua,coagment,gat point,cargo pant
+chino||||knickers,shorts,slacks,trousers,underpants,Bermudas,bloomers,breeches,briefs,britches,chaps,chinos,cords,corduroys,denims,drawers,dungarees,jeans,jodhpurs,overalls,pantaloons,panties,blue jeans,boxer shorts,clam diggers,pedal pushers,chino
+gaucho||||driver,passenger,traveler,cowboy,gaucho,straphanger,suburbanite,horseback rider,horseman/woman,gaucho
+legging||||buskins,chaps,puttees,putts,stockings,half-boots,leggins,legging
+harem pant||||hair implant,remnant,rampart,remand,repent,are spent,hair implants,more meant
+jeans||||chaps,denims,pants,trousers,LeesTM,Levi'sTM,WranglersTM,blue jeans,jeans
+bootcut jean||||betoken,took ten,be gotten,took turn,boycotting,took train,be token,be taken,bootcut jean
+flared jean||||flared up,foretoken,flat pan,flag down,flashed on,fired on,floridness,flaring,flared jean
+skinny jean||||skinning,skinny,skunking,skunked,skunky,skin tone,skanky,skunkier,skinny jean
+straight jean||||straight man,straight men,straight,straight jean
+tapered jean||||taperecording,tapered off,tape deck,typewritten,tare down,tape recording,taperecords,tapering,tapered jean
+skirts||||hem,brim,brink,fringe,margin,outskirts,perimeter,periphery,purlieus,rim,skirting,verge,skirts
+ballerina skirt||||ballerina,billingsgate,blatherskite,blew gasket,bleariest,bellringers,blinks at,blurriest,ballerina skirt
+peasant skirt||||peasant,pastiest,pastest,plantest,pursuants,pliantest,persnickety,person street,peasant skirt
+bubble skirt||||bubbles,burbliest,bubblers,bubbles over,bubbled,bubblies,babbles,bobbles,bubble skirt
+pencil skirt||||pencils,pencilled,penciled,pendulosity,pencil,pencil skirt
+slit skirt||||saltiest,slightiest,saltest,sleetiest,slightest,slit,sports coat,slit skirt
+trumpet skirt||||trumpeters,trumpeted,trampest,trumpet,promptest,trumpet call,trump card,trumpet skirt
+pleat skirt||||politest,pulsejet,puts act,pleat,poltergeist,pulse jet,puts card,pulls coat,pleat skirt
+layered skirt||||librettist,laid siege to,laying siege to,more discoid,layered skirt
+wrap skirt||||rapacity,drops kite,repast,rips out,rhapsody,rips into,ropiest,ripest,wrap skirt
+asymmetrical skirt||||asymmetrical skirt
+shorts||||burden,essence,heart,kernel,marrow,matter,nub,nucleus,pith,point,sense,short,substance,thrust,upshot,shorts
+knee shorts||||shorts,nestors,earshots,shirts,shots,tshirts,newshounds,shoats,knee shorts
+hot shorts||||hot shots,hotshot,potshots,hot shot,tshirts,short shorts,t shirts,short shots,hot shorts
+others||||others,balance,dregs,dross,excess,heel,leavings,leftovers,overplus,remains,remnant,residual,residue,rump,superfluity,surplus,bottom of barrel,odds and ends,orts,residum,others
+glass||||mirror,reflector,looking glass,seeing glass,glass
+belt||||ribbon,ring,strap,string,cincture,cummerbund,girdle,sash,waistband,belt
+sock||||belt,beat,bop,buffet,chop,clout,cuff,ding,nail,paste,punch,slap,smack,smash,soak,whack,sock
+bra ||||bikini,bra,corset,lingerie,shorts,undergarment,underpants,undershirt,BVDs,G-string,Jockeys™,boxers,briefs,drawers,loincloth,panties,skivvies,underclothes,underclothing,undies,Jockey™ shorts,boxer shorts,intimate things,long johns,smallclothes,underthings
+underwear||||bikini,bra,corset,lingerie,shorts,undergarment,underpants,undershirt,BVDs,G-string,Jockeys™,boxers,briefs,drawers,loincloth,panties,skivvies,underclothes,underclothing,undies,Jockey™ shorts,boxer shorts,intimate things,long johns,smallclothes,underthings,underwear
+shoes||||boot,cleat,cowboy boot,loafer,pump,running shoe,slipper,sneaker,tennis shoe,clog,flip-flops,footgear,moccasin,sandals,basketball shoe,boat shoe,golf shoe,high heels,hightops,penny loafer,platform shoe,wing-tip,work shoe,shoes
+pump||||drain,draw,inject,pour,push,send,siphon,supply,tap,dilate,distend,draft,drive,elevate,empty,force,inflate,swell,bail out,blow up,draw off,drive out,force out,pump
+sandal||||moccasin,shoe,slipper,clog,espadrille,huarache,talaria,thong,zori,flipflop,sandal
+boots||||footwear,brogan,galoshes,oxford,waders,waters,mukluk,snow shoes,boots
+flats||||empty,horizontal,low,unbroken,even,flush,oblate,pancake,plane,reclining,splay,collapsed,complanate,decumbent,deflated,depressed,extended,fallen,laid low,outstretched,planar,planate,procumbent,prone,prostrate,punctured,recumbent,spread out,supine,tabular,flats
+sneaker||||cleat,footwear,shoe,tennis shoe,footgear,sneak,basketball shoe,gym shoe,hightop,rubber-soled shoe,sneaker
+oxford||||footwear,brogan,galoshes,oxford,waders,waters,mukluk,snow shoes,oxford
+slipper||||mule,sandal,clog,pump,scuff,baboosh,babouche,pantofle,slipshoe,slipper
+active shoe||||active,actively,activewear,actifies,activation,octaves,activity,active shoe
+watch||||timepiece,wristwatch,chronometer,stopwatch,ticker,timer,analog watch,digital watch,pocket watch,watch
+hat||||fedora,headgear,helmet,Panama,Stetson,boater,bonnet,bowler,bucket,chapeau,headpiece,lid,millinery,sailor,skimmer,sombrero,straw,tam,topper,stove pipe,tam o'shanter,ten-gallon,hat
+wallet||||folder,pocketbook,purse,wallet
+bag||||backpack,briefcase,gear,handbag,kit,pack,packet,pocket,pouch,purse,sack,suitcase,carryall,case,duffel,haversack,holdall,knapsack,pocketbook,poke,rucksack,sac,saddlebag,satchel,tote,attaché,carry-on,bag
+necktie||||nectar,negate,nick time,neck,nicked,necklet,necking,cutie,necktie
+scarve||||scarce,carve,scare,scarf,starve,scurvy,scarcer,carver,scarve

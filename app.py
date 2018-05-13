@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 # from flask_uploads import UploadSet, configure_uploads, IMAGES
 from predict import svm_intent, svm_response
+from detect_attribute import detect_attribute
 from text_task_resnet.run_prediction import run_text_prediction
 import json
 from os import path
@@ -37,6 +38,7 @@ def get_bot_response():
     msg = request.args.get('messageText')
     intent_type = svm_intent(msg, app.root_path)
     response_type = svm_response(msg, app.root_path)
+    print detect_attribute(msg, app.root_path)
 
     if "hi" == msg or "hello" == msg:
         # if this is the start of the conversation, return predifned response
