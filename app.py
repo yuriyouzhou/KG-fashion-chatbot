@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 # from flask_uploads import UploadSet, configure_uploads, IMAGES
 from predict import svm_intent, svm_response
 from detect_attribute import detect_attribute
+from locate_taxonomy import taxonomy_classify
 from text_task_resnet.run_prediction import run_text_prediction
 import json
 from os import path
@@ -38,7 +39,9 @@ def get_bot_response():
     msg = request.args.get('messageText')
     intent_type = svm_intent(msg, app.root_path)
     response_type = svm_response(msg, app.root_path)
-    print detect_attribute(msg, app.root_path)
+    nodes = taxonomy_classify(msg, app.root_path)
+    _, intersect_results = detect_attribute(msg, app.root_path)
+
 
     if "hi" == msg or "hello" == msg:
         # if this is the start of the conversation, return predifned response
@@ -80,7 +83,8 @@ def get_bot_response():
 
     # step 3: run model prediction
     if "text" in response_type or "both" in response_type:
-        pred_sent = run_text_prediction(app.root_path)[-1]
+        # pred_sent = run_text_prediction(app.root_path)[-1]
+        pred_sent = ' '.join(nodes)+ ' '.join(intersect_results)
         response = [{
             "response_type": response_type,
             "intent_type": intent_type,

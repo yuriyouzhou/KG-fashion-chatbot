@@ -1,19 +1,24 @@
-from nltk import word_tokenize, bigrams, trigrams, ngrams
-def load_leaves():
-    with open("fashion-copy.csv") as input_f:
+from nltk import word_tokenize, bigrams, trigrams, ngrams, PorterStemmer
+from os import path
+def load_leaves(root_path):
+    porter = PorterStemmer()
+    with open(path.join(root_path, "taxonomy_detection", "fashion-copy.csv")) as input_f:
         lines = input_f.readlines()
         leaves = {}
         for l in lines:
             leaf = l.strip().split(".")[-1][:-1]
-            if len(leaf.split()) > 1:
-                bi_leaf = list(bigrams(leaf.split()))[0]
+            tokens = [porter.stem(v) for v in leaf.split()]
+            if len(tokens) > 1:
+                bi_leaf = list(tokens)[0]
                 leaves[bi_leaf] = leaf
             else:
+                leaf = tokens[0]
                 leaves[leaf] = leaf
         return leaves
 
-def load_taxonomy():
-    with open("fashion-copy.csv") as input_f:
+def load_taxonomy(root_path):
+    porter = PorterStemmer()
+    with open(path.join(root_path, "taxonomy_detection", "fashion-copy.csv")) as input_f:
         lines = input_f.readlines()[1:]
         inter_node = {}
         nodes = []
@@ -22,6 +27,7 @@ def load_taxonomy():
             l = len(tokens)
             for i,t in enumerate(tokens):
                 t = t.replace(",", "")
+                t = porter.stem(t)
                 if t not in nodes:
                     nodes.append(t)
                 if i < l-1:
@@ -33,8 +39,8 @@ def load_taxonomy():
         return inter_node, nodes
 
 
-def load_synonym():
-    with open("synonym.txt", 'r') as f:
+def load_synonym(root_path):
+    with open(path.join(root_path, "taxonomy_detection", "synonym.txt"), 'r') as f:
         lines = f.readlines()
         syn_dict = {}
         for l in lines:
@@ -55,7 +61,12 @@ def load_synonym():
         #         print k, syn_dict[k]
         return syn_dict
 
-def taxonomy_classify(sentence):
+def taxonomy_classify(sentence, root_path):
+    leaves = load_leaves(root_path)
+    inter2leaf, all_nodes = load_taxonomy(root_path)
+    syn_dict = load_synonym(root_path)
+
+
     tokens = word_tokenize(sentence)
     bg = bigrams(tokens)
     tg = trigrams(tokens)
@@ -74,23 +85,22 @@ def taxonomy_classify(sentence):
 
     for t in tokens:
         if t in all_nodes:
-            return t
+            print inter2leaf
+            return inter2leaf[t]
         if t in syn_dict:
             return syn_dict[t]
 
 
-if __name__ == '__main__':
-    leaves = load_leaves()
-    inter2leaf, all_nodes = load_taxonomy()
-    syn_dict = load_synonym()
 
+if __name__ == '__main__':
 
     while True:
         try:
             utterence = raw_input("Please talk to me: ")
-            node = taxonomy_classify(utterence)
-            if node :
-                print node
+            nodes = taxonomy_classify(utterence, ".")
+            if nodes :
+                print nodes
+
             else:
                 print("not found")
 
