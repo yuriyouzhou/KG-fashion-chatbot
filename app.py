@@ -1,9 +1,10 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, send_from_directory, send_file
 # from flask_uploads import UploadSet, configure_uploads, IMAGES
 from predict import svm_intent, svm_response
 from detect_attribute import detect_attribute
 from locate_taxonomy import taxonomy_classify
 from text_task_resnet.run_prediction import run_text_prediction
+from get_img_by_id import get_img_by_id
 import json
 from os import path
 
@@ -40,7 +41,7 @@ def get_bot_response():
     intent_type = svm_intent(msg, app.root_path)
     response_type = svm_response(msg, app.root_path)
     nodes = taxonomy_classify(msg, app.root_path)
-    _, intersect_results = detect_attribute(msg, app.root_path)
+    intersect_results, text_result = detect_attribute(msg, app.root_path)
 
 
     if "hi" == msg or "hello" == msg:
@@ -84,13 +85,14 @@ def get_bot_response():
     # step 3: run model prediction
     if "text" in response_type or "both" in response_type:
         # pred_sent = run_text_prediction(app.root_path)[-1]
-        pred_sent = ' '.join(nodes)+ ' '.join(intersect_results)
+        pred_sent = ' '.join(nodes)+ ' '.join(intersect_results) + ' '.join(text_result)
+        print "here", get_img_by_id(text_result, app.root_path)
         response = [{
             "response_type": response_type,
             "intent_type": intent_type,
             "speaker": "system",
             "utterance": {
-                "images": None,
+                "images": get_img_by_id(text_result, app.root_path),
                 "false nlg": None,
                 "nlg": pred_sent
             }
@@ -101,7 +103,7 @@ def get_bot_response():
             "intent_type": intent_type,
             "speaker": "system",
             "utterance": {
-                "images": None,
+                "images": get_img_by_id(text_result, app.root_path),
                 "false nlg": None,
                 "nlg": "Image response is not ready yet"
             }
