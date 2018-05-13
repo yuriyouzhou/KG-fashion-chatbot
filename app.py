@@ -86,13 +86,14 @@ def get_bot_response():
     if "text" in response_type or "both" in response_type:
         # pred_sent = run_text_prediction(app.root_path)[-1]
         pred_sent = ' '.join(nodes)+ ' '.join(intersect_results) + ' '.join(text_result)
+        print text_result
         print "here", get_img_by_id(text_result, app.root_path)
         response = [{
             "response_type": response_type,
             "intent_type": intent_type,
             "speaker": "system",
             "utterance": {
-                "images": get_img_by_id(text_result, app.root_path),
+                "images": [get_img_by_id(text_result, app.root_path)],
                 "false nlg": None,
                 "nlg": pred_sent
             }
@@ -103,7 +104,7 @@ def get_bot_response():
             "intent_type": intent_type,
             "speaker": "system",
             "utterance": {
-                "images": get_img_by_id(text_result, app.root_path),
+                "images": [get_img_by_id(text_result, app.root_path)],
                 "false nlg": None,
                 "nlg": "Image response is not ready yet"
             }
@@ -132,6 +133,10 @@ def upload():
         }
         return json.dumps(response)
 
+@app.route('/<path:path>')
+def static_file(path):
+    print "serving img file from",  path
+    return send_file(path, mimetype='image/jpeg')
 
 def clear_history():
     with open(path.join(app.root_path, './history/curr_history.json'), 'w') as output:

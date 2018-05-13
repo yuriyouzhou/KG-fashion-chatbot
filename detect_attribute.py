@@ -322,7 +322,7 @@ if __name__ == '__main__':
     while True:
         try:
             utterence = raw_input("Please talk to me: ")
-            intersect_result, text_result = detect_attribute(utterence)
+            intersect_result, text_result = detect_attribute(utterence, ".")
 
             if intersect_result != None or text_result != None:
                 if intersect_result != None:

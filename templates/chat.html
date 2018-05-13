@@ -282,7 +282,7 @@ div.desc {
                         var response_type = response[0]["response_type"];
                         console.log(intent_type);
                         console.log(response_type);
-                        console.log(response[1])
+                        console.log(response[1]);
                         var inferred_text  = get_inffered_sentence(intent_type, response_type);
                         $('#id-text').html(inferred_text);
                         for (var j=0; j<response.length; j++) {
