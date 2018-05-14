@@ -1,42 +1,75 @@
 from nltk import word_tokenize, bigrams, trigrams, ngrams, PorterStemmer
 from os import path
 def load_leaves(root_path):
+    # load leafs (after stemming)
     porter = PorterStemmer()
     with open(path.join(root_path, "taxonomy_detection", "fashion-copy.csv")) as input_f:
         lines = input_f.readlines()
         leaves = {}
-        for l in lines:
-            leaf = l.strip().split(".")[-1][:-1]
-            tokens = [porter.stem(v) for v in leaf.split()]
-            if len(tokens) > 1:
-                bi_leaf = list(tokens)[0]
-                leaves[bi_leaf] = leaf
-            else:
-                leaf = tokens[0]
-                leaves[leaf] = leaf
-        return leaves
+        leaves_list = []
+        leaf2id = {}
 
-def load_taxonomy(root_path):
+        # step 1: exact word mapping
+        for line in lines:
+            l, ID = line.split(",")
+            leaf = l.strip().split(".")[-1]
+            leaves_list.append(leaf)
+            leaves[leaf] = leaf
+            leaf2id[leaf] = ID
+
+        # step 2: stemmed word mapping
+        stemmed_leaf_list = []
+        for leaf in leaves_list:
+            stemmed_leaf = ' '.join([porter.stem(v) for v in leaf.split()])
+            stemmed_leaf_list.append(stemmed_leaf)
+            if leaf not in stemmed_leaf:
+                leaves[stemmed_leaf] = leaf
+
+
+        # step 3: bi-gram and tri-gram mapping
+        for leaf in leaves_list+stemmed_leaf_list:
+            l = len(leaf.split())
+            if l == 2:
+                bg = list(bigrams(leaf.split()))[0]
+                leaves[bg] = leaf
+            if l == 3:
+                tg = list(trigrams(leaf.split()))[0]
+                leaves[tg] = leaf
+
+        # step 4: corner cases
+        leaves[('t', 'shirt')] = 't-shirt'
+        leaves[('t', 'shirts')] = 't-shirt'
+        leaves[('a', 'line')] = 'a-line'
+        leaves['Tshirt'] = 't-shirt'
+        leaves['tshirt'] = 't-shirt'
+        leaves['T-shirt'] = 't-shirt'
+        leaves['camisole'] = 'camisole tank'
+        leaves['cape'] = 'cape coat'
+        leaves['polo'] = 'polo shirt'
+        leaves['henley'] = 'henley shirt'
+
+
+        return leaves, leaf2id
+
+def load_inter_node(root_path):
     porter = PorterStemmer()
     with open(path.join(root_path, "taxonomy_detection", "fashion-copy.csv")) as input_f:
         lines = input_f.readlines()[1:]
         inter_node = {}
-        nodes = []
         for l in lines:
-            tokens = l[:-1].split(".")
+            l, ID = l.split(",")
+            tokens = l.split(".")
             l = len(tokens)
             for i,t in enumerate(tokens):
-                t = t.replace(",", "")
-                t = porter.stem(t)
-                if t not in nodes:
-                    nodes.append(t)
                 if i < l-1:
+                    t = porter.stem(t)
+                    next_t = porter.stem(tokens[i+1])
                     if t not in inter_node:
-                        inter_node[t] = [tokens[i+1]]
+                        inter_node[t] = [next_t]
                     else:
-                        if tokens[i+1] not in inter_node[t]:
-                            inter_node[t].append(tokens[i+1])
-        return inter_node, nodes
+                        if next_t not in inter_node[t]:
+                            inter_node[t].append(next_t)
+        return inter_node
 
 
 def load_synonym(root_path):
@@ -62,8 +95,8 @@ def load_synonym(root_path):
         return syn_dict
 
 def taxonomy_classify(sentence, root_path):
-    leaves = load_leaves(root_path)
-    inter2leaf, all_nodes = load_taxonomy(root_path)
+    leaves, leaf2id = load_leaves(root_path)
+    inter2leaf = load_inter_node(root_path)
     syn_dict = load_synonym(root_path)
 
 
@@ -71,40 +104,50 @@ def taxonomy_classify(sentence, root_path):
     bg = bigrams(tokens)
     tg = trigrams(tokens)
 
+
+    # step 1: check if at leaf node
+    leaf_result, inter_result = [], []
     for t in tg:
-        if t in syn_dict:
-            return syn_dict[t]
-
-
+        if t in leaves:
+            leaf_result.append(leaves[t])
     for t in bg:
         if t in leaves:
-            return leaves[t]
-        if t in syn_dict:
-            return syn_dict[t]
+            leaf_result.append(leaves[t])
+    for t in tokens:
+        if t in leaves:
+            leaf_result.append(leaves[t])
 
+    # step 2: check if at inter node
+    for t in tg:
+        if t in syn_dict:
+            inter_result.append(syn_dict[t])
+
+    for t in bg:
+        if t in syn_dict:
+            inter_result.append(syn_dict[t])
 
     for t in tokens:
-        if t in all_nodes:
-            print inter2leaf
-            return inter2leaf[t]
+        if t in inter2leaf:
+            inter_result.append(inter2leaf[t])
         if t in syn_dict:
-            return syn_dict[t]
+            inter_result.append(syn_dict[t])
 
+    if leaf_result:
+        return inter_result, leaf_result, leaf2id[leaf_result[0]]
+    return inter_result, leaf_result, None
 
 
 if __name__ == '__main__':
-
+    porter = PorterStemmer()
     while True:
-        try:
-            utterence = raw_input("Please talk to me: ")
-            nodes = taxonomy_classify(utterence, ".")
-            if nodes :
-                print nodes
+        utterence = raw_input("Please talk to me: ")
+        utterence = ' '.join([porter.stem(v) for v in utterence.split()])
+        inter_result, leaf_result, ID = taxonomy_classify(utterence, ".")
+        if leaf_result :
+            print "leaf result detected", leaf_result, ID
+        elif inter_result:
+            print "inter result detected", inter_result
+        else:
+            print("not found")
 
-            else:
-                print("not found")
-
-        except ValueError:
-            print("Sorry, I didn't understand that.")
-            continue
 

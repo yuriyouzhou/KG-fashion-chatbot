@@ -86,8 +86,6 @@ def get_bot_response():
     if "text" in response_type or "both" in response_type:
         # pred_sent = run_text_prediction(app.root_path)[-1]
         pred_sent = ' '.join(nodes)+ ' '.join(intersect_results) + ' '.join(text_result)
-        print text_result
-        print "here", get_img_by_id(text_result, app.root_path)
         response = [{
             "response_type": response_type,
             "intent_type": intent_type,
