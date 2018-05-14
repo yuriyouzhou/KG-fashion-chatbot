@@ -204,6 +204,7 @@ def detect_attribute(sent, root_path):
         # attribute query
         results = []
         intersect_result = set()
+        detected_attr_dict = {}
         for t in tokens:
             if t in brand_idx:
                 results += brand_idx[t]
@@ -211,65 +212,66 @@ def detect_attribute(sent, root_path):
                     intersect_result = intersect_result.intersection(brand_idx[t])
                 else:
                     intersect_result = set(brand_idx[t])
-                print "brand detected", len(brand_idx[t]), "results"
+                detected_attr_dict["brand"] = t
             if t in category_idx:
                 results += category_idx[t]
                 if len(intersect_result) > 0:
                     intersect_result = intersect_result.intersection(category_idx[t])
                 else:
                     intersect_result = set(category_idx[t])
-                print "category detected", len(category_idx[t]), "results"
+                detected_attr_dict["category"] = t
             if t in color_idx:
                 results += color_idx[t]
                 if len(intersect_result) > 0:
                     intersect_result = intersect_result.intersection(color_idx[t])
                 else:
                     intersect_result = set(color_idx[t])
-                print "color detected", len(color_idx[t]), "results"
+                detected_attr_dict["color"] = t
             if t in gender_idx:
                 results += gender_idx[t]
                 if len(intersect_result) > 0:
                     intersect_result = intersect_result.intersection(gender_idx[t])
                 else:
                     intersect_result = set(gender_idx[t])
-                print "gender detected", len(gender_idx[t]), "results"
+                detected_attr_dict["gender"] = t
             if t in material_idx:
                 results += material_idx[t]
                 if len(intersect_result) > 0:
                     intersect_result = intersect_result.intersection(material_idx[t])
                 else:
                     intersect_result = set(material_idx[t])
-                print "material detected", len(material_idx[t]), "results"
+                detected_attr_dict["material"] = t
             if t in necks_idx:
                 results += necks_idx[t]
                 if len(intersect_result) > 0:
                     intersect_result = intersect_result.intersection(necks_idx[t])
                 else:
                     intersect_result = set(necks_idx[t])
-                print "necks detected", len(necks_idx[t]), "results"
+                detected_attr_dict["neck"] = t
             if t in occasion_idx:
                 results += occasion_idx[t]
                 if len(intersect_result) > 0:
                     intersect_result = intersect_result.intersection(occasion_idx[t])
                 else:
                     intersect_result = set(occasion_idx[t])
-                print "occasion detected", len(occasion_idx[t]), "results"
+                detected_attr_dict["occasion"] = t
             if t in season_idx:
                 results += season_idx[t]
                 if len(intersect_result) > 0:
                     intersect_result = intersect_result.intersection(season_idx[t])
                 else:
                     intersect_result = set(season_idx[t])
-                print "season detected", len(season_idx[t]), "results"
+                detected_attr_dict["season"] = t
             if t in sleeves_idx:
                 results += sleeves_idx[t]
                 if len(intersect_result) > 0:
                     intersect_result = intersect_result.intersection(sleeves_idx[t])
                 else:
                     intersect_result = set(sleeves_idx[t])
-                print "sleeve detected", len(sleeves_idx[t]), "results"
+                detected_attr_dict["sleeve"] = t
 
-        return list(set(results)), list(intersect_result)
+
+        return detected_attr_dict, list(set(results)), list(intersect_result)
 
     def tfidf_retrieval(query):
         testVectorizerArray = vectorizer.transform([query]).toarray()
@@ -313,27 +315,19 @@ def detect_attribute(sent, root_path):
     for k in sleeves_idx:
         SLEEVES.append(k)
 
-    results, intersect_results = detect_attr(sent)
+    detected_attr_dict, results, intersect_results = detect_attr(sent)
     text_results = tfidf_retrieval(sent)
-    print "intersct size", len(text_results)
-    return intersect_results, text_results
+    return detected_attr_dict, intersect_results, text_results
     
 if __name__ == '__main__':
     while True:
-        try:
-            utterence = raw_input("Please talk to me: ")
-            intersect_result, text_result = detect_attribute(utterence, ".")
+        utterence = raw_input("Please talk to me: ")
+        detect_attr_dict, intersect_result, text_retrieval_rest = detect_attribute(utterence, ".")
 
-            if intersect_result != None or text_result != None:
-                if intersect_result != None:
-                    print len(intersect_result)
-                else:
-                    print "intersected attribute set size is 0"
-                # print text_result, "the price is $", id2price_idx[text_results]
-                # print 'img is at', id2path[text_results]
-            else:
-                print("not found")
+        if detect_attr_dict:
+            for attr in detect_attr_dict:
+                print "detect " + attr + " with value " + detect_attr_dict[attr]
+            print "intersection result is ", len(intersect_result), intersect_result
+        else:
+            print("not found")
 
-        except ValueError:
-            print("Sorry, I didn't understand that.")
-            continue

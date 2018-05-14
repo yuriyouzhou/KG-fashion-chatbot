@@ -40,7 +40,8 @@ def get_bot_response():
     msg = request.args.get('messageText')
     intent_type = svm_intent(msg, app.root_path)
     response_type = svm_response(msg, app.root_path)
-    nodes = taxonomy_classify(msg, app.root_path)
+    # nodes = taxonomy_classify(msg, app.root_path)
+    inter_node, leaf_node, ID = taxonomy_classify(msg, app.root_path)
     intersect_results, text_result = detect_attribute(msg, app.root_path)
 
 
