@@ -2,9 +2,10 @@ from flask import Flask, render_template, request, send_from_directory, send_fil
 # from flask_uploads import UploadSet, configure_uploads, IMAGES
 from predict import svm_intent, svm_response
 from detect_attribute import detect_attribute
-from locate_taxonomy import taxonomy_classify
+from locate_taxonomy import taxonomy_classify, load_leaves
 from text_task_resnet.run_prediction import run_text_prediction
 from get_img_by_id import get_img_by_id
+from status_helper import initialise_state
 import json
 from os import path
 import csv
@@ -43,30 +44,66 @@ def get_bot_response():
     msg = request.args.get('messageText')
     intent_type = svm_intent(msg, app.root_path)
     response_type = svm_response(msg, app.root_path)
+    if intent_type == 'greeting':
+        initialise_state(app.root_path)
+        response = [ {
+            "type": "greeting",
+            "speaker": "system",
+            "utterance": {
+                "images": None,
+                "false nlg": None,
+                "nlg": "Hi, how can i help you with something today?"
+            }
+        }]
+        return json.dumps(response)
 
     inter_child, leaf_node, leaf_sample_img_ID = taxonomy_classify(msg, app.root_path)
-    detect_attr_dict, intersect_result, text_retrieval_rest = detect_attribute(msg, app.root_path)
+    attr_keywords, detect_attr_dict, intersect_result, orientation_keyword = detect_attribute(msg, app.root_path)
 
     state = load_state()
-    state = update_state(state, inter_child, leaf_node, detect_attr_dict, leaf_sample_img_ID)
+    state = update_state(state, inter_child, leaf_node, attr_keywords, leaf_sample_img_ID)
 
     if state['is_leaf_node']:
-        if not detect_attr_dict:
+        if not attr_keywords and leaf_sample_img_ID and orientation_keyword == None:
             # no attribute detected, give representative response
+            print orientation_keyword
+            curr_id = leaf_sample_img_ID if leaf_sample_img_ID else state['product_id']
             response = [{
                 "intent_type": intent_type,
                 "response_type": response_type,
                 "speaker": "system",
                 "utterance": {
-                    "images": [get_img_by_id(leaf_sample_img_ID, app.root_path)],
+                    "images": [get_img_by_id(curr_id, app.root_path, state['current_node'])],
                     "false nlg": None,
-                    "nlg": "check this %s out! you can ask more about %s" % (leaf_node[0], ', '.join(state['missing_attr']))
-                }
+                    "nlg": "check this %s out! you can ask more about %s" % (state['current_node'][0], ', '.join(state['missing_attr']))
+                },
+                "img_text": state['current_node']
             }]
             return json.dumps(response)
+        elif state['product_id'] and orientation_keyword:
+            img = get_img_by_id(state['product_id'], app.root_path, state['current_node'], orientation_keyword)
+            if img != None:
+                img = [img]
+                nlg = "check this %s out! you can ask more about %s" % (state['current_node'][0], ', '.join(state['missing_attr']))
+            else:
+                nlg = "sorry we don't have such orientation~ask me more"
+
+            response = [{
+                "intent_type": intent_type,
+                "response_type": response_type,
+                "speaker": "system",
+                "utterance": {
+                    "images": img,
+                    "false nlg": None,
+                    "nlg": nlg
+                },
+                "img_text": state['current_node']
+            }]
+            return json.dumps(response)
+
         elif state['product_id']:
             # a product is located
-            nlg = get_info_by_id(state['product_id'], state['missing_attr'])
+            nlg = get_info_by_id(state['product_id'], attr_keywords)
             response = [{
                 "intent_type": intent_type,
                 "response_type": response_type,
@@ -100,8 +137,8 @@ def get_bot_response():
                 return json.dumps(response)
             else:
                 # not enough attributes, ask for more
-                attr_names = ['gender', 'season', 'color', 'material', 'occasion', 'brand', 'neck',
-                              'sleeve', 'category']
+                attr_names = ['genders', 'seasons', 'colors', 'materials', 'occasions', 'brand', 'necks',
+                              'sleeves', 'category', 'price']
 
                 missing = []
                 for k in attr_names:
@@ -124,16 +161,21 @@ def get_bot_response():
     if inter_child:
         # if at inter node, return traverse guid response
         print inter_child
-        msg = "Which one do you like? %s"% ', '.join(inter_child)
+        if len(inter_child) > 3:
+            inter_child = inter_child[:3]
+        msg = "Which one do you like? We have %s"% ', '.join(inter_child)
+        _, leaf2id = load_leaves(app.root_path)
+        imgs = [get_img_by_id(leaf2id[str(v)], app.root_path) for v in inter_child]
         response = [{
             "intent_type": intent_type,
             "response_type": response_type,
             "speaker": "system",
             "utterance": {
-                "images": None,
+                "images": imgs,
                 "false nlg": None,
                 "nlg": msg
-            }
+            },
+            "img_text": inter_child
         }]
         return json.dumps(response)
 
@@ -207,16 +249,17 @@ def get_bot_response():
     return json.dumps(response)
 
 
-def get_info_by_id(id, attr):
+def get_info_by_id(id, keywords):
     with open(path.join(app.root_path, 'attribute_detection', 'attributes_65572.txt'), 'r') as f:
         attributes = json.loads(f.readline())
         for item in attributes['products']:
             if id == item['ID']:
-                out = [item['ID'], item['brand'], item['price'],
-                       item['genders'], item['colors'], item['materials'],
-                       item['occasions'], item['necks'], item['sleeves'],
-                       item['texts'], item['category']]
-            return ' '.join(out)
+                nlg = ""
+                for v in keywords:
+                    v = str(v)
+                    nlg += "its %s is %s"%(v, item[v])
+                nlg += " it is %s" % item['texts']
+                return nlg
 
 @app.route('/upload', methods=['GET', 'POST'])
 def upload():
@@ -250,7 +293,7 @@ def load_state():
     with open(path.join(app.root_path, './history/status.json'), 'r') as f:
         return json.load(f)
 
-def update_state(state, inter_child, leaf_node, detect_attr_dict, curr_id):
+def update_state(state, inter_child, leaf_node, attr_keywords, curr_id):
     product_or_node_changed = False
     # update current node
     node_curr_round = leaf_node if leaf_node else None
@@ -275,19 +318,19 @@ def update_state(state, inter_child, leaf_node, detect_attr_dict, curr_id):
         state['is_leaf_node'] = False
 
     # update missing and informed attr
-    attr_names = ['gender', 'season', 'color', 'material', 'occasion', 'brand', 'neck',
-                  'sleeve', 'category']
+    attr_names = ['genders', 'seasons', 'colors', 'materials', 'occasions', 'brand', 'necks', 'sleeves',
+                  'category', 'price']
 
     if product_or_node_changed:
         missing, informed = [], []
         for k in attr_names:
-            if k not in detect_attr_dict:
+            if k not in attr_keywords:
                 missing.append(k)
             else:
                 informed.append(k)
     else:
         missing, informed = state['missing_attr'], state['informed_attr']
-        for k in detect_attr_dict:
+        for k in attr_keywords:
             if k in missing:
                 missing.remove(k)
                 informed.append(k)

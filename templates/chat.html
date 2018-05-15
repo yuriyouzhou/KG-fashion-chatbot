@@ -195,13 +195,13 @@ div.desc {
                         ".\n My response type is " + "<strong>"+response+"</strong>";
                 return para;
             };
-            var get_image_div = function (src, i) {
+            var get_image_div = function (src, i, text) {
 
               var image_div = "<div class=\"responsive\">\n" +
                   "  <div class=\"gallery\">\n" +
                   "    <a target=\"_blank\" href=\"" + src + "\">\n" +
                   "      <img src=\"" + src + "\" alt=\"Mountains\" width=\"200\" >\n" +
-                  "          <div class=\"desc\">Product "+i+"</div>"      +
+                  "          <div class=\"desc\"> "+text+"</div>"      +
                   "    </a>\n" +
                   "  </div>\n" +
                   "</div>" ;
@@ -299,8 +299,9 @@ div.desc {
                         if (image_response && image_response.length > 0) {
                             console.log(image_response.length);
                             var image_div = "";
+                            var img_text_arr = response[j]["img_text"];
                             for (i=0; i<image_response.length; i++) {
-                                image_div += get_image_div(image_response[i], i+1)
+                                image_div += get_image_div(image_response[i], i+1, img_text_arr[i])
                             }
                             const chatPanel = document.getElementById("chatPanel");
 

@@ -16,6 +16,9 @@ def load_leaves(root_path):
             leaves_list.append(leaf)
             leaves[leaf] = leaf
             leaf2id[leaf] = ID
+            stemmed_leaf = ' '.join([porter.stem(v) for v in leaf.split()])
+            leaf2id[stemmed_leaf] = ID
+
 
         # step 2: stemmed word mapping
         stemmed_leaf_list = []
@@ -24,6 +27,7 @@ def load_leaves(root_path):
             stemmed_leaf_list.append(stemmed_leaf)
             if leaf not in stemmed_leaf:
                 leaves[stemmed_leaf] = leaf
+                leaf2id[stemmed_leaf] = ID
 
 
         # step 3: bi-gram and tri-gram mapping

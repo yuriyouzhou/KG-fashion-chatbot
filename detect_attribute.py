@@ -201,6 +201,7 @@ def detect_attribute(sent, root_path):
         tokens = word_tokenize(sent)
         tokens = [porter.stem(v) for v in tokens]
 
+
         # attribute query
         results = []
         intersect_result = set()
@@ -289,6 +290,7 @@ def detect_attribute(sent, root_path):
         test = tfidf
         return id_idx[np.argmax(np.dot(corpus, test.T))]
     vectorizer, transformer, corpus = load_tfidf_model(root_path)
+
     def load_index(attr):
         with open(path.join(root_path, 'attribute_detection', 'index', attr+'_index.pkl'), 'rb') as f:
             return pickle.load(f)
@@ -315,15 +317,54 @@ def detect_attribute(sent, root_path):
     for k in sleeves_idx:
         SLEEVES.append(k)
 
+    def detect_keyword(sent):
+        attr_names_dict = {
+            'genders': 'genders',
+            'gender': 'genders',
+            'seasons': 'seasons',
+            'season': 'seasons',
+            'colors': 'colors',
+            'color': 'colors',
+            'colour': 'color',
+            'materials': 'materials',
+            'material': 'materials',
+            'occasions': 'occasions',
+            'occasion': 'occasions',
+            'brand': 'brand',
+            'necks': 'necks',
+            'neck': 'necks',
+            'sleeves': 'sleeves',
+            'sleeve': 'sleeves',
+            'category': 'category',
+            'price': 'price'
+        }
+        tokens = sent.split()
+        keywords = []
+        for t in tokens:
+            if t in attr_names_dict:
+                keywords.append(attr_names_dict[t])
+        return keywords
+    def detect_orientation(sent):
+        # detect orientation
+        tokens = sent.split()
+        orientation = ['look', 'back', 'right', 'left', 'top']
+        orientation_keyword = None
+        for t in tokens:
+            if t in orientation:
+                orientation_keyword = t
+        return orientation_keyword
+
     detected_attr_dict, results, intersect_results = detect_attr(sent)
-    text_results = tfidf_retrieval(sent)
-    return detected_attr_dict, intersect_results, text_results
+    # text_results = tfidf_retrieval(sent)
+    attr_keyword = detect_keyword(sent)
+    orien_keyword = detect_orientation(sent)
+    return attr_keyword, detected_attr_dict, intersect_results, orien_keyword
     
 if __name__ == '__main__':
     while True:
         utterence = raw_input("Please talk to me: ")
-        detect_attr_dict, intersect_result, text_retrieval_rest = detect_attribute(utterence, ".")
-
+        detect_attr_keyword, detect_attr_dict, intersect_result = detect_attribute(utterence, ".")
+        print detect_attr_keyword
         if detect_attr_dict:
             for attr in detect_attr_dict:
                 print "detect " + attr + " with value " + detect_attr_dict[attr]
