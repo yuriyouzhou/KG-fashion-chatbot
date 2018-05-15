@@ -120,17 +120,17 @@ def taxonomy_classify(sentence, root_path):
     # step 2: check if at inter node
     for t in tg:
         if t in syn_dict:
-            inter_result.append(syn_dict[t])
+            inter_result+=syn_dict[t]
 
     for t in bg:
         if t in syn_dict:
-            inter_result.append(syn_dict[t])
+            inter_result+=syn_dict[t]
 
     for t in tokens:
         if t in inter2leaf:
-            inter_result.append(inter2leaf[t])
+            inter_result+=inter2leaf[t]
         if t in syn_dict:
-            inter_result.append(syn_dict[t])
+            inter_result+=syn_dict[t]
 
     if leaf_result:
         return inter_result, leaf_result, leaf2id[leaf_result[0]]

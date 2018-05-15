@@ -11,6 +11,7 @@ def imgid2path(img_dir):
     return id2path
 
 def get_img_by_id(id, root_path):
+    id = id.strip()
     id2path = imgid2path(path.join(root_path, 'product_images_123325/'))
     return id2path[id]
 
