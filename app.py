@@ -8,6 +8,9 @@ from get_img_by_id import get_img_by_id
 import json
 from os import path
 import csv
+import requests
+
+
 app = Flask(__name__)
 # photos = UploadSet('photos', IMAGES)
 # app.config['UPLOADED_PHOTOS_DEST'] = 'static/img'
@@ -219,13 +222,21 @@ def get_info_by_id(id, attr):
 def upload():
     if request.method == 'POST':
         file = request.files['photo']
+        
+        payload = {"fashion_img": file}
+        r = requests.post("http://127.0.0.1:7777/", files=payload).json()
+        if r["status"] == "success":
+            image_feature =  r["feature"]
+        else:
+            image_feature = []
+    
         response = {
             "type": "greeting",
             "speaker": "system",
             "utterance": {
                 "images": None,
                 "false nlg": None,
-                "nlg": "%s has received!"%file.name
+                "nlg": "%s has received!"%str(image_feature)#file.name
             }
         }
         return json.dumps(response)
