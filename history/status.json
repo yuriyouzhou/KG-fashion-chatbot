@@ -1,1 +1,1 @@
-{"current_node": ["wrap dress"], "missing_attr": ["gender", "season", "color", "material", "occasion", "brand", "neck", "sleeve", "category"], "is_leaf_node": true, "informed_attr": [], "product_id": " B00MOGMLUK\n"}
+{"is_leaf_node": true, "product_id": "B00J09Y24C", "missing_attr": ["genders", "seasons", "materials", "occasions", "brand", "necks", "sleeves"], "current_node": ["jacket"], "informed_attr": ["colors"], "attr_dict": {"category": "jacket", "colors": "blue"}}

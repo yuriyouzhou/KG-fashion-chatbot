@@ -227,49 +227,49 @@ def detect_attribute(sent, root_path):
                     intersect_result = intersect_result.intersection(color_idx[t])
                 else:
                     intersect_result = set(color_idx[t])
-                detected_attr_dict["color"] = t
+                detected_attr_dict["colors"] = t
             if t in gender_idx:
                 results += gender_idx[t]
                 if len(intersect_result) > 0:
                     intersect_result = intersect_result.intersection(gender_idx[t])
                 else:
                     intersect_result = set(gender_idx[t])
-                detected_attr_dict["gender"] = t
+                detected_attr_dict["genders"] = t
             if t in material_idx:
                 results += material_idx[t]
                 if len(intersect_result) > 0:
                     intersect_result = intersect_result.intersection(material_idx[t])
                 else:
                     intersect_result = set(material_idx[t])
-                detected_attr_dict["material"] = t
+                detected_attr_dict["materials"] = t
             if t in necks_idx:
                 results += necks_idx[t]
                 if len(intersect_result) > 0:
                     intersect_result = intersect_result.intersection(necks_idx[t])
                 else:
                     intersect_result = set(necks_idx[t])
-                detected_attr_dict["neck"] = t
+                detected_attr_dict["necks"] = t
             if t in occasion_idx:
                 results += occasion_idx[t]
                 if len(intersect_result) > 0:
                     intersect_result = intersect_result.intersection(occasion_idx[t])
                 else:
                     intersect_result = set(occasion_idx[t])
-                detected_attr_dict["occasion"] = t
+                detected_attr_dict["occasions"] = t
             if t in season_idx:
                 results += season_idx[t]
                 if len(intersect_result) > 0:
                     intersect_result = intersect_result.intersection(season_idx[t])
                 else:
                     intersect_result = set(season_idx[t])
-                detected_attr_dict["season"] = t
+                detected_attr_dict["seasons"] = t
             if t in sleeves_idx:
                 results += sleeves_idx[t]
                 if len(intersect_result) > 0:
                     intersect_result = intersect_result.intersection(sleeves_idx[t])
                 else:
                     intersect_result = set(sleeves_idx[t])
-                detected_attr_dict["sleeve"] = t
+                detected_attr_dict["sleeves"] = t
 
 
         return detected_attr_dict, list(set(results)), list(intersect_result)
@@ -359,7 +359,33 @@ def detect_attribute(sent, root_path):
     attr_keyword = detect_keyword(sent)
     orien_keyword = detect_orientation(sent)
     return attr_keyword, detected_attr_dict, intersect_results, orien_keyword
-    
+
+def filter_by_attr(attr_dict, root_path):
+    with open(path.join(root_path, 'attribute_detection', "attributes_65572.txt")) as f:
+        attributes = json.load(f)
+        results = []
+        for product in attributes['products']:
+            is_match = True
+            for attr in attr_dict:
+                attr = str(attr)
+                if product[attr] != attr_dict[attr]:
+                    is_match = False
+            if is_match:
+                results.append(product['ID'])
+        return results
+
+def get_attr_dict_by_id(ID, root_path):
+    with open(path.join(root_path, 'attribute_detection', "attributes_65572.txt")) as f:
+        attributes = json.load(f)
+        attr_dict = {}
+        attr_list =['genders', 'seasons', 'colors', 'materials', 'occasions', 'brand', 'necks', 'sleeves', 'category']
+
+        for product in attributes['products']:
+            if product['ID'] == ID:
+                for attr in attr_list:
+                    attr_dict[attr] = product[attr]
+        return attr_dict
+
 if __name__ == '__main__':
     while True:
         utterence = raw_input("Please talk to me: ")

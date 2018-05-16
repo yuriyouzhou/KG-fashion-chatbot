@@ -12,7 +12,9 @@ def imgid2path(img_dir):
 
 def get_img_by_id(id, root_path, category, orientation=None):
     id = id.strip()
-    id2path = imgid2path(path.join(root_path, 'product_images_123325/'))
+    id2path = imgid2path(path.join(root_path, 'product_images_123325'))
+    if category == None:
+        return id2path[id]
     if orientation:
         img_path = './product_images_123325/%s/%s'% (category[0], id+"_%s_1.jpg"%orientation)
         if path.isfile(path.join(root_path, img_path)):

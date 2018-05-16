@@ -7,6 +7,9 @@ def initialise_state(root_path):
                 "is_leaf_node": False,
                 "missing_attr": [''],
                 "informed_attr": [''],
+                "attr_dict": {
+
+                },
                 "product_id": None}
 
         f.write(json.dumps(state))
