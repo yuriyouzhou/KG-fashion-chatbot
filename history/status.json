@@ -1,1 +1,1 @@
-{"is_leaf_node": true, "product_id": "B00J09Y24C", "missing_attr": ["genders", "seasons", "materials", "occasions", "brand", "necks", "sleeves"], "current_node": ["jacket"], "informed_attr": ["colors"], "attr_dict": {"category": "jacket", "colors": "blue"}}
+{"is_leaf_node": true, "product_id": "B00J09Y24C", "missing_attr": ["genders", "seasons", "colors", "materials", "occasions", "brand", "necks", "sleeves"], "current_node": ["jacket"], "informed_attr": [], "attr_dict": {"category": "jacket"}}

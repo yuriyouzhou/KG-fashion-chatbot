@@ -142,6 +142,8 @@ def taxonomy_classify(sentence, root_path):
 
 
 if __name__ == '__main__':
+    print load_leaves(".")
+    exit()
     porter = PorterStemmer()
     while True:
         utterence = raw_input("Please talk to me: ")

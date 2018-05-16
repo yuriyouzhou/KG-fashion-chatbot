@@ -6,7 +6,9 @@ from locate_taxonomy import taxonomy_classify, load_leaves
 from text_task_resnet.run_prediction import run_text_prediction
 from get_img_by_id import get_img_by_id
 from status_helper import initialise_state
+from image_helper import find_class, find_similar_image
 import json
+import numpy as np
 from os import path
 import csv
 import requests
@@ -198,6 +200,7 @@ def get_bot_response():
             inter_child = inter_child[:3]
         msg = "Which one do you like? We have %s"% ', '.join(inter_child)
         _, leaf2id = load_leaves(app.root_path)
+        print leaf2id
         imgs = [get_img_by_id(leaf2id[str(v)], app.root_path, None) for v in inter_child]
         response = [{
             "intent_type": intent_type,
@@ -299,22 +302,30 @@ def upload():
     if request.method == 'POST':
         file = request.files['photo']
         
-        payload = {"fashion_img": file}
-        r = requests.post("http://127.0.0.1:7777/", files=payload).json()
-        if r["status"] == "success":
-            image_feature =  r["feature"]
-        else:
-            image_feature = []
-    
-        response = {
-            "type": "greeting",
+        # payload = {"fashion_img": file}
+        # r = requests.post("http://127.0.0.1:7777/", files=payload).json()
+        # if r["status"] == "success":
+        #     image_feature =  r["feature"]
+        # else:
+        #     image_feature = []
+        image_feature = np.random.uniform(-10,10,size=2137)
+
+        img_vec, category_vec = image_feature[:2048], image_feature[2048:]
+        print len(img_vec), len(category_vec)
+        img_path, category_name, ID = find_similar_image(img_vec, app.root_path)
+        nlg = "predicted class are %s, we find this product for you!" % ', '.join(find_class(category_vec, app.root_path))
+
+        response = [{
+            "intent_type": "image_detection",
+            "response_type": "image and text",
             "speaker": "system",
             "utterance": {
-                "images": None,
+                "images": [img_path],
                 "false nlg": None,
-                "nlg": "%s has received!"%str(image_feature)#file.name
-            }
-        }
+                "nlg": nlg
+            },
+            "img_text": [category_name]
+        }]
         return json.dumps(response)
 
 @app.route('/<path:path>')

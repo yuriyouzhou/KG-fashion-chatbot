@@ -237,13 +237,44 @@ div.desc {
 					    data: formData,
 					    async: false,
 					    success: function (response) { 
-                        console.log(response);
                         response = JSON.parse(response);
-                        // $('#messageText').val('');
-                        var answer = response["utterance"]["nlg"];
-                        const chatPanel = document.getElementById("chatPanel");
-                        $(".media-list").append('<li class="media"><div class="media-body"><div class="media"><div class="media-body">' + answer + '<hr/></div></div></div></li>');
-                        $(".fixed-panel").stop().animate({ scrollTop: $(".fixed-panel")[0].scrollHeight}, 1000);
+                        console.log(response);
+                        $('#messageText').val('');
+                        var intent_type = response[0]["intent_type"];
+                        var response_type = response[0]["response_type"];
+                        console.log(intent_type);
+                        console.log(response_type);
+                        console.log(response[1]);
+                        var inferred_text  = get_inffered_sentence(intent_type, response_type);
+                        $('#id-text').html(inferred_text);
+                        for (var j=0; j<response.length; j++) {
+                                                    var text_response = response[j]["utterance"]["nlg"];
+                        var image_response = response[j]["utterance"]["images"];
+
+                        if (text_response) {
+                       const chatPanel = document.getElementById("chatPanel");
+                        $(".media-list").append('<li class="media"><div class="media-body"><div class="media"><div class="media-body">' + text_response + '<hr/></div></div></div></li>');
+												$(".fixed-panel").stop().animate({ scrollTop: $(".fixed-panel")[0].scrollHeight}, 1000);
+
+                        }
+
+                        if (image_response && image_response.length > 0) {
+                            console.log(image_response.length);
+                            var image_div = "";
+                            var img_text_arr = response[j]["img_text"];
+                            for (i=0; i<image_response.length; i++) {
+                                image_div += get_image_div(image_response[i], i+1, img_text_arr[i])
+                            }
+                            const chatPanel = document.getElementById("chatPanel");
+
+                        $(".media-list").append('<li class="media"><div class="media-body"><div class="media"><div class="media-body">' + image_div + '</div></div></div><hr/></li>');
+
+                            $(".fixed-panel").stop().animate({ scrollTop: $(".fixed-panel")[0].scrollHeight}, 1000);
+
+
+                        }
+
+                        }
 					    },
 					    error: function (r) {
 					    	console.log("error");
