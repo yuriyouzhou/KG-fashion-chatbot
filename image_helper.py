@@ -1,23 +1,31 @@
 import numpy as np
 from os import path
 def find_class(vec, root_path):
-    ids = np.argsort(vec)[:3]
+    ids = np.argsort(vec)[-3:]
+    print ids
     category_name = load_category_list(root_path)
     results = []
     for id in ids:
         results.append(category_name[id])
-    return results
+    return list(set(results))
 
 def find_similar_image(vec, root_path):
-    with open(path.join(root_path, "img_feat", "images_vgg_Fea_shrink.npy"), 'r') as f:
+    print "here"
+    with open(path.join(root_path, "img_feat", "images_vgg_Fea.npy"), 'r') as f:
         vgg_feat = np.load(f)
+        vgg_feat = vgg_feat[:,2048:]
     with open(path.join(root_path, "img_feat", "images_vgg_name.npy"), 'r') as f:
         vgg_name = np.load(f)
-    id = np.argmax(np.dot(vgg_feat, vec.T))
-    img_path = vgg_name[id]
-    category, id = img_path.split("/")[2:4]
-    id = id.split("_")[0]
-    return img_path, category, id
+    print vgg_feat.shape, vec.T.shape, np.dot(vgg_feat, vec.T).shape
+    ids = np.argsort(np.dot(vgg_feat, vec.T))[-5:]
+    img_path, category, id_arr = [], [], []
+    for id in ids:
+	print id, vgg_name[id]
+        img_path.append(vgg_name[id])
+        curr_category, curr_id = vgg_name[id].split("/")[2:4]
+        category.append(curr_category)
+        id_arr.append(curr_id.split("_")[0])
+    return img_path, category, id_arr
 
 
 def load_category_list(root_path):
@@ -41,5 +49,5 @@ if __name__ == '__main__':
     img_vec, category_vec = image_feature[:2048], image_feature[2048:]
 
     print "predicted class are %s" % ', '.join(find_class(category_vec, "."))
-    print "most similar image is at %s with category %s and ID %s" % find_similar_image(img_vec, ".")
+    print "most similar image is at %s with category %s and ID %s" % find_similar_image(category_vec, ".")
 

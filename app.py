@@ -302,29 +302,29 @@ def upload():
     if request.method == 'POST':
         file = request.files['photo']
         
-        # payload = {"fashion_img": file}
-        # r = requests.post("http://127.0.0.1:7777/", files=payload).json()
-        # if r["status"] == "success":
-        #     image_feature =  r["feature"]
-        # else:
-        #     image_feature = []
-        image_feature = np.random.uniform(-10,10,size=2137)
+        payload = {"fashion_img": file}
+        r = requests.post("http://127.0.0.1:7777/", files=payload).json()
+        if r["status"] == "success":
+            image_feature =  np.array(r["feature"])
+        else:
+            image_feature = []
+#         image_feature = np.random.uniform(-10,10,size=2137)
 
         img_vec, category_vec = image_feature[:2048], image_feature[2048:]
-        print len(img_vec), len(category_vec)
-        img_path, category_name, ID = find_similar_image(img_vec, app.root_path)
+        img_path, category_name, ID = find_similar_image(category_vec, app.root_path)
         nlg = "predicted class are %s, we find this product for you!" % ', '.join(find_class(category_vec, app.root_path))
-
+        print category_name
+        
         response = [{
             "intent_type": "image_detection",
             "response_type": "image and text",
             "speaker": "system",
             "utterance": {
-                "images": [img_path],
+                "images": img_path,
                 "false nlg": None,
                 "nlg": nlg
             },
-            "img_text": [category_name]
+            "img_text": category_name
         }]
         return json.dumps(response)
 
@@ -438,6 +438,6 @@ def clear_history():
 
 
 if __name__ == "__main__":
-    # app.run(host='0.0.0.0')
-    app.run()
+    app.run(host='0.0.0.0')
+#     app.run()
 
