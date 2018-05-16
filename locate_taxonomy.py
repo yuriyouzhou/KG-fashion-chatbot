@@ -27,7 +27,7 @@ def load_leaves(root_path):
             stemmed_leaf_list.append(stemmed_leaf)
             if leaf not in stemmed_leaf:
                 leaves[stemmed_leaf] = leaf
-                leaf2id[stemmed_leaf] = ID
+                # leaf2id[stemmed_leaf] = ID
 
 
         # step 3: bi-gram and tri-gram mapping

@@ -314,6 +314,13 @@ def upload():
         img_path, category_name, ID = find_similar_image(category_vec, app.root_path)
         nlg = "predicted class are %s, we find this product for you!" % ', '.join(find_class(category_vec, app.root_path))
         print category_name
+
+        # update
+        state = load_state()
+        state['category'] = category_name[0]
+        with open(path.join(app.root_path, './history/status.json'), 'w') as f:
+            f.write(json.dumps(state))
+
         
         response = [{
             "intent_type": "image_detection",
@@ -439,5 +446,5 @@ def clear_history():
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0')
-#     app.run()
+    # app.run()
 
