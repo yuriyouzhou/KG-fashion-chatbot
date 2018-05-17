@@ -157,7 +157,7 @@ def get_bot_response():
                     results_to_show = intersect_result[:3]
                 else:
                     results_to_show = intersect_result
-                images = [get_img_by_id(v, app.root_path) for v in results_to_show]
+                images = [get_img_by_id(v, app.root_path, None) for v in results_to_show]
                 print images
                 response = [{
                     "intent_type": intent_type,
@@ -255,14 +255,14 @@ def get_bot_response():
 
     # step 3: run model prediction
     if "text" in response_type or "both" in response_type:
-        # pred_sent = run_text_prediction(app.root_path)[-1]
-        pred_sent = ' '.join(nodes)+ ' '.join(intersect_results) + ' '.join(text_result)
+        pred_sent = run_text_prediction(app.root_path)[-1]
+        # pred_sent = ' '.join(nodes)+ ' '.join(intersect_results) + ' '.join(text_result)
         response = [{
             "response_type": response_type,
             "intent_type": intent_type,
             "speaker": "system",
             "utterance": {
-                "images": [get_img_by_id(text_result, app.root_path)],
+                "images": [get_img_by_id(state['product_id'], app.root_path, None)],
                 "false nlg": None,
                 "nlg": pred_sent
             }
@@ -273,7 +273,7 @@ def get_bot_response():
             "intent_type": intent_type,
             "speaker": "system",
             "utterance": {
-                "images": [get_img_by_id(text_result, app.root_path)],
+                "images": [get_img_by_id(state['product_id'], app.root_path, None)],
                 "false nlg": None,
                 "nlg": "Image response is not ready yet"
             }
@@ -293,7 +293,11 @@ def get_info_by_id(id, keywords):
                 nlg = ""
                 for v in keywords:
                     v = str(v)
-                    nlg += "its %s is %s"%(v, item[v])
+                    if type(item[v]) == list:
+                        description = ' '.join(item[v])
+                    else:
+                        description = item[v]
+                    nlg += "its %s is %s"%(v, description)
                 nlg += " it is %s" % item['texts']
                 return nlg
 

@@ -361,14 +361,17 @@ def detect_attribute(sent, root_path):
     return attr_keyword, detected_attr_dict, intersect_results, orien_keyword
 
 def filter_by_attr(attr_dict, root_path):
+    print attr_dict
     with open(path.join(root_path, 'attribute_detection', "attributes_65572.txt")) as f:
         attributes = json.load(f)
         results = []
         for product in attributes['products']:
+            if product['category'] == 'a-line':
+                product['category'] = 'a-lin'
             is_match = True
-            for attr in attr_dict:
+            for attr in product:
                 attr = str(attr)
-                if product[attr] != attr_dict[attr]:
+                if attr in attr_dict and product[attr] != attr_dict[attr]:
                     is_match = False
             if is_match:
                 results.append(product['ID'])
