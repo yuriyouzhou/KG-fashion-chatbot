@@ -181,7 +181,8 @@ def run_test(param):
         print "model created"
         saver = tf.train.Saver()
         tf.initialize_all_variables()
-        sess = tf.Session()
+        gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=0.75)
+        sess = tf.Session(config=tf.ConfigProto(gpu_options=gpu_options))
         if len(os.listdir(param['model_path'])) > 0:
             old_model_file = None
             try:
