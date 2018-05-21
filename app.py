@@ -50,6 +50,8 @@ def get_bot_response():
         initialise_state(app.root_path)
         response = [ {
             "type": "greeting",
+            "intent_type": "greeting",
+            "response_type": "text",
             "speaker": "system",
             "utterance": {
                 "images": None,
@@ -298,7 +300,6 @@ def get_info_by_id(id, keywords):
                     else:
                         description = item[v]
                     nlg += "its %s is %s"%(v, description)
-                nlg += " it is %s" % item['texts']
                 return nlg
 
 @app.route('/upload', methods=['GET', 'POST'])
