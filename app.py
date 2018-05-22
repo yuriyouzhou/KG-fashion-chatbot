@@ -118,6 +118,7 @@ def get_bot_response():
             }]
             return json.dumps(response)
         elif state['product_id'] and orientation_keyword:
+            # change orientation
             img = get_img_by_id(state['product_id'], app.root_path, state['current_node'], orientation_keyword)
             if img != None:
                 img = [img]
@@ -153,6 +154,7 @@ def get_bot_response():
             }]
             return json.dumps(response)
         else:
+            # filter by current attributes and retrieve certain products
             if len(intersect_result) <= 1000:
                 # enough attributes, return some sample responses
                 if len(intersect_result) >= 3:
@@ -217,6 +219,7 @@ def get_bot_response():
         }]
         return json.dumps(response)
 
+    ########## seq2sew model ##########
     if "hi" == msg or "hello" == msg:
         # if this is the start of the conversation, return predifned response
         clear_history()
